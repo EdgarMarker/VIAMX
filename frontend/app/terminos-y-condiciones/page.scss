@@ -1,0 +1,44 @@
+#Terminos {
+    .section__terminos {
+        padding: clamp(3rem, 10vh, 10rem) 5% var(--pad);
+        
+        .column__1 {
+            max-width: 900px;
+            margin-inline: auto;
+            
+            h1 {
+                font-size: var(--size-3xl);
+                font-weight: 700;
+                margin-bottom: 3rem;
+                color: var(--color-primary);
+                line-height: 1.1;
+            }
+            
+            h2, h3 {
+                font-size: var(--size-lg);
+                margin-top: clamp(2rem, 5vh, 4rem);
+                margin-bottom: 1.5rem;
+                color: var(--color-primary);
+                text-transform: none;
+            }
+            
+            p {
+                font-size: var(--size-md);
+                line-height: 1.8;
+                margin-bottom: 1.5rem;
+                color: var(--color-black);
+                opacity: 0.9;
+            }
+
+            ul, ol {
+                margin-bottom: 2rem;
+                padding-left: 1.5rem;
+                li {
+                    font-size: var(--size-md);
+                    line-height: 1.8;
+                    margin-bottom: 0.5rem;
+                }
+            }
+        }
+    }
+}

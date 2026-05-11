@@ -1,0 +1,120 @@
+#Contact{
+
+    .section__hero{
+        padding-top: 30px;
+        padding-bottom: var(--pad);
+        background-color: var(--color-gray-light);
+        .col__left{
+            --left: 45;
+            justify-content: center;
+        }
+        .col__right{
+            --right: 55;
+            img{
+                border-radius: var(--radius);
+                aspect-ratio: 1.5 / 1;
+            }
+        }
+    }
+
+    .section__intro {
+        padding: var(--pad) 5%;
+        .column__2{
+            .col__left{
+                --left: 45;
+                padding-right: clamp(0rem, 10vw, 15rem);
+            h3{
+            }
+            h2{
+            }
+            ul {
+                li {
+                margin-bottom: 1rem;
+                a {
+                    display: inline-flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    justify-content: flex-start;
+                    gap: 1rem;
+                    text-decoration: none;
+                    color: var(--color-primary-dark);
+                    margin-bottom: 0;
+                    line-height: 1.3em;
+                    &::before {
+                    content: "";
+                    position: relative;
+                    display: inline-flex;
+                    width: auto;
+                    height: 1.3em;
+                    aspect-ratio: 1/1;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center center;
+                    line-height: inherit;
+                    transition: transform 0.18s ease, opacity 0.18s ease;
+                    }
+                    &:hover {
+                    text-decoration: underline;
+                    }
+                }
+                &:nth-child(1) a::before{
+                    background-image: url(/svg/phone.svg);
+                }
+                &:nth-child(2) a::before{
+                    background-image: url(/svg/email.svg);
+                }
+                &:nth-child(3) a::before{
+                    background-image: url(/svg/location.svg);
+                }
+                }
+            }
+            }
+            .col__right{
+                --right: 55;
+                label{
+                    color: var(--color-primary-dark);
+                    input, textarea, select{
+                        border-color: var(--color-gray-light);
+                        background-color: var(--color-gray-light);
+                        &:focus{
+                            border-color: var(--color-secondary);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .section__map{
+        padding: 0;
+        .column__1{
+            .mapa{
+                height: 50vh !important;
+            }
+        }
+    }
+
+}
+
+
+
+
+
+
+
+/*  Tableta  */
+@media only screen and (max-width: 1024px) {
+
+    
+
+}
+
+
+
+
+/*  Móvil  */
+@media only screen and (max-width: 768px) {
+
+
+
+}

@@ -1,0 +1,25 @@
+{
+    "accordion": {
+        "title": {
+            "h2": "Accordion Section Title",
+            "p": "Quisque interdum faucibus quam, in commodo diam fringilla in. Nulla facilisi. Vestibulum accumsan dolor elit, at tincidunt lacus lobortis consequat. Vestibulum varius fringilla turpis, at lobortis arcu pharetra ac. Ut non venenatis libero, at aliquet nunc. Maecenas at molestie ante."
+        },
+        "items": [
+            {
+                "id": 1,
+                "header": "¿Cuánto tiempo debo esperar para ver resultados óptimos?",
+                "content": "Quisque interdum faucibus quam, in commodo diam fringilla in. Nulla facilisi. Vestibulum accumsan dolor elit, at tincidunt lacus lobortis consequat. Vestibulum varius fringilla turpis, at lobortis arcu pharetra ac. Ut non venenatis libero, at aliquet nunc. Maecenas at molestie ante."
+            },
+            {
+                "id": 2,
+                "header": "¿Dónde encuentro las opciones de configuración en el panel?",
+                "content": "Quisque interdum faucibus quam, in commodo diam fringilla in. Nulla facilisi. Vestibulum accumsan dolor elit, at tincidunt lacus lobortis consequat. Vestibulum varius fringilla turpis, at lobortis arcu pharetra ac. Ut non venenatis libero, at aliquet nunc. Maecenas at molestie ante."
+            },
+            {
+                "id": 3,
+                "header": "¿Cuentan con algúna garantía o tiempo máximo para la devolución de dinero?",
+                "content": "Quisque interdum faucibus quam, in commodo diam fringilla in. Nulla facilisi. Vestibulum accumsan dolor elit, at tincidunt lacus lobortis consequat. Vestibulum varius fringilla turpis, at lobortis arcu pharetra ac. Ut non venenatis libero, at aliquet nunc. Maecenas at molestie ante."
+            }
+        ]
+    }
+}

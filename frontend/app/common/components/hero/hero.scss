@@ -1,0 +1,14 @@
+.section__hero {
+  padding-top: calc((1 - var(--stack)) * 5rem + var(--stack) * 3rem);
+  .col__left {
+    --left: 45;
+    justify-content: center;
+  }
+  .col__right {
+    --right: 55;
+    img {
+      border-radius: var(--radius);
+      aspect-ratio: 1.2 / 1;
+    }
+  }
+}

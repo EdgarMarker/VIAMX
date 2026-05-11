@@ -1,0 +1,40 @@
+#Blog {
+  .section__hero {
+    padding-block: 3rem;
+    background-color: var(--color-gray-light);
+    .col__left {
+      --left: 65;
+      justify-content: center;
+    }
+    .col__right {
+      --right: 35;
+      img {
+        border-radius: var(--radius);
+        aspect-ratio: 1 / 0.8;
+      }
+    }
+  }
+
+  .section__blog {
+    padding-bottom: var(--pad);
+    .column__2 {
+      .col__right {
+        label {
+          font-size: var(--size-xs);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.4rem;
+          select {
+            font-size: inherit;
+          }
+        }
+      }
+    }
+    .column__1 {
+      .listado {
+        padding-bottom: clamp(2rem, 5vh, 5rem);
+      }
+    }
+  }
+}

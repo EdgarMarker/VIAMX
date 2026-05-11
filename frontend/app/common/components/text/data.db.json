@@ -1,0 +1,30 @@
+{
+  "numbers": {
+    "items": [
+      {
+        "id": 1,
+        "prefix": "-",
+        "number": 65,
+        "sufix": "%",
+        "data": "Quisque interdum faucibus quam in commodo diam",
+        "img": "/images/icon.svg"
+      },
+      {
+        "id": 2,
+        "prefix": "",
+        "number": 22,
+        "sufix": "%",
+        "data": "Vestibulum accumsan dolor elit, at tincidunt lacus lobortis",
+        "img": "/images/icon.svg"
+      },
+      {
+        "id": 3,
+        "prefix": "+",
+        "number": 73,
+        "sufix": "",
+        "data": "Ut non venenatis libero, at aliquet nunc Maecenas atelia",
+        "img": "/images/icon.svg"
+      }
+    ]
+  }
+}

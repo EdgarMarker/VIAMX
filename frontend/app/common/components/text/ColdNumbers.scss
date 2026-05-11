@@ -1,0 +1,91 @@
+ul.cold__numbers__list{
+    background-color: var(--color-gray-light);
+    border-radius: var(--radius);
+    gap: unset;
+    li{
+        border-right-width: 1px;
+        border-style: solid;
+        border-color: var(--color-white);
+        height: 100%;
+        width: 100%;
+        &:last-child{
+            border-right: 0;
+        }
+        .data__wrapper{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            padding: clamp(3rem, (100vw - var(--bp) * 1), 8rem) clamp(5vw, (100vw - var(--bp) * 1), 2rem);
+            .data__text__wrapper{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: clamp(0.5rem, calc((100vw - 768px) * 0.1), 2rem);;
+                h4{
+                    font-size: var(--size-3xl);
+                    color: var(--color-secondary);
+                    text-align: center;
+                    font-weight: 600;
+                    .sufix{
+                        font-size: var(--size-lg);
+                    }
+                }
+                .data__bar{
+                    background-color: var(--color-secondary);
+                    width: 100%;
+                    max-width: 200px;
+                    min-width: 40px;
+                    height: 0.3rem;
+                }
+            }
+            h3{
+                font-size: var(--size-md);
+                color: var(--color-primary-dark);
+                font-weight: 400;
+            }
+            .data__img__wrapper{
+                position: relative;
+                background-color: var(--color-primary-dark);
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1 / 1;
+                width: 3vw;
+                min-width: 60px;
+                font-size: 0;
+                line-height: 0;
+                padding: clamp(0.5rem, 1vw, 1rem);
+                border-radius: 10px;
+                img{
+                    position: relative;
+                    width: 100%;
+                    height: auto;
+                    aspect-ratio: 1 / 1;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+/*  Móvil  */
+@media only screen and (max-width: 768px) {
+
+    
+    ul.cold__numbers__list{
+        li{
+            border-right-width: 0px;
+            border-bottom-width: 1px;
+            &:last-child{
+                border-bottom-width: 0px;
+            }
+        }
+    }
+
+
+}

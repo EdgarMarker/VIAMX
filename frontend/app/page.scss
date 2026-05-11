@@ -1,0 +1,98 @@
+#Home{
+
+    .section__rPosts{
+        padding-inline: 0%;
+        padding-bottom: var(--pad);
+        .column__2{
+            padding: 0 5%;
+            .col__left{
+                --left: 70;
+            }
+            .col__right{
+                --right: 30;
+                align-items: flex-end;
+            }
+        }
+        .column__1{
+            padding: 0%;
+        }
+    }
+
+    .section__testimonios{
+        padding: var(--pad) 0;
+        background-color: var(--color-gray-light);
+        .column__2{
+            padding-inline: 5%;
+            .col__left{
+                --right: 70;
+                
+                
+            }
+            .col__right{
+                --right: 30;
+                align-items: flex-end;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+/*  Tableta  */
+@media only screen and (max-width: 1024px) {
+
+    #Home{
+
+        .section__rPosts{
+            .column__2{
+                flex-wrap: nowrap;
+                gap: 0;
+                .col__left{
+                    min-width: unset;
+                    --left: 80;
+                }
+                .col__right{
+                    min-width: unset;
+                    --right: 20;
+                }
+            }
+            .column__1{
+                margin-top: 2rem;
+            }
+        }
+
+        .section__testimonios{
+            .column__2{
+                flex-wrap: nowrap;
+                gap: 0;
+                .col__left{
+                    min-width: unset;
+                    --left: 80;
+                }
+                .col__right{
+                    min-width: unset;
+                    --right: 20;
+                }
+            }
+            .column__1{
+                margin-top: 2rem;
+            }
+        }
+
+    }
+
+}
+
+
+
+
+/*  Móvil  */
+@media only screen and (max-width: 768px) {
+
+
+
+}

@@ -1,0 +1,9 @@
+.section__split{
+    padding-block: calc((1 - var(--stack)) * 10rem + var(--stack) * 5rem);
+    .column__1{
+        padding-right: calc((1 - var(--stack)) * 30% + var(--stack) * 0%);;
+        h2{
+            font-size: var(--size-3xl);
+        }
+    }
+}

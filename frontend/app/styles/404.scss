@@ -1,0 +1,41 @@
+#NotFound {
+  .section__404 {
+    padding: var(--pad) 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 85dvh;
+    .column__1{
+      align-items: center;
+      justify-content: center;
+      svg{
+        width: 10vw;
+        height: auto;
+        max-width: 400px;
+        min-width: 100px;
+        object-fit: contain;
+        object-position: center bottom;
+        aspect-ratio: 2 / 1;
+      }
+      h2 {
+        font-size: clamp(6rem, calc((100vw - 768px) * 0.2), 20rem);
+        color: var(--color-primary);
+        margin-bottom: 0;
+        font-weight: 700;
+        text-align: center;
+        line-height: 1;
+      }
+      h1{
+        color: var(--color-primary);
+        font-weight: 600;
+      }
+      p{
+        max-width: clamp(30rem, calc((100vw - 768px) * 0.5), 50rem);
+        text-align: center;
+      }
+    }
+  }
+
+
+}

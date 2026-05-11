@@ -1,0 +1,34 @@
+.section__amenities{
+    background-color: var(--color-gray-light);
+    padding-bottom: var(--pad);
+    .column__1{
+        ul.listado{
+            --gap: clamp(4rem, 8vh, 12rem);
+            grid-template-columns: var(--grid5);
+            row-gap: 3rem;
+            column-gap: 5rem;
+            li.amenity{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                svg{
+                    min-width: min(100%, var(--mincol));
+                    height: auto;
+                    padding-top: clamp(1rem, 3.5vh, 8rem);
+                    padding-inline: clamp(1rem, 3.5vw, 8rem);
+                    padding-bottom: 0.5rem;
+                    path{
+                        fill: transparent;
+                        stroke: var(--color-secondary);
+                    }
+                }
+                span{
+                    font-size: var(--size-md);
+                }
+            }
+        }
+    }
+}
+

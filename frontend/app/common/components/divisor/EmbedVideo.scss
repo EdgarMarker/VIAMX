@@ -1,0 +1,19 @@
+.section__embed__video{
+    position: relative;
+    padding-inline: calc((1 - var(--stack)) * 15% + var(--stack) * 5%);
+    &::before{
+        content: "";
+        position: absolute;
+        height: 40%;
+        width: 100%;
+        background-color: var(--color-gray);
+        bottom: 0;
+        left: 0;
+    }
+    .column__1{
+        font-size: 0;
+        iframe{
+            border-radius: var(--radius);
+        }
+    }
+}

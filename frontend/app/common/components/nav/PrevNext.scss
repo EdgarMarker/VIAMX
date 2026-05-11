@@ -1,0 +1,132 @@
+.section__prev__next{
+    background-color: var(--color-gray-light);
+    padding-inline: 0%;
+    padding-bottom: var(--pad);
+    font-size: 0;
+    line-height: 0;
+    .column__2{
+        .col__left{
+            align-items: flex-start;
+            border-radius: unset;
+        }
+        .col__right{
+            align-items: flex-end;
+            border-radius: unset;
+        }
+        .btn__prev__next{
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            display: flex;
+            justify-content: stretch;
+            border-radius: var(--radius);
+            gap: unset;
+            cursor: pointer;
+            background-color: var(--color-white);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            &:hover{
+                .prevnext__img{
+                    img{
+                        transform: scale(1.1);
+                        filter: brightness(0.6);
+                    }
+                }
+            }
+            .prevnext__img{
+                width: 50%;
+                height: auto;
+                overflow: hidden;
+                font-size: 0;
+                line-height: 0;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    aspect-ratio: 1.2 / 1;
+                    transition: transform 0.3s ease, filter 0.3s ease;
+                }
+            }
+            
+            .prevnext__data{
+                padding: calc((1 - var(--stack)) * 3rem + var(--stack) * 1rem);
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                justify-content: center;
+                position: relative;
+                span{
+                    text-align: right;
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    margin-bottom: calc((1 - var(--stack)) * 1rem + var(--stack) * 0.5rem);
+                    color: var(--color-secondary-dark);
+                    text-transform: uppercase;
+                    font-size: var(--size-xs);
+                    svg{
+                        width: clamp(1.2rem, 2vw, 2rem);
+                        height: auto;
+                        aspect-ratio: 1 / 1;
+                        background-color: var(--color-primary);
+                        border-radius: 100px;
+                        padding: clamp(.3rem, .5vw, .6rem);
+                        path{
+                            fill: var(--color-white) !important;
+                        }
+                        
+                    }
+                }
+                h3{
+                    display: block;
+                    width: fit-content;
+                    color: var(--color-secondary-dark);
+                    text-decoration: none;
+                    font-size: var(--size-xs);
+                    padding: 0.2rem 0.5rem;
+                    border-radius: 0.25rem;
+                    border: 1px solid var(--color-secondary-dark);
+                    transition: border-color 0.3s ease;
+                }
+                h2{
+                    font-size: var(--size-xl);
+                    margin-bottom: 1.4rem;
+                }
+            }
+            &.btn__prev{
+                border-bottom-left-radius: unset;
+                border-top-left-radius: unset;
+                transform: translateX(-10%);
+                &:hover{
+                    transform: translateX(calc((1 - var(--stack)) * 0% + var(--stack) * -5%));
+                }
+                .prevnext__data{
+                    span{
+                        svg{
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+            }
+            &.btn__next{
+                flex-direction: row-reverse;
+                transform: translateX(10%);
+                border-bottom-right-radius: unset;
+                border-top-right-radius: unset;
+                .prevnext__data{
+                    align-items: flex-end;
+                    
+                    h3{
+                        text-align: right;
+                    }
+                    h2{
+                        text-align: right;
+                    }
+                }
+                
+                &:hover{
+                    transform: translateX(calc((1 - var(--stack)) * 0% + var(--stack) * 5%));
+                }
+            }
+        }
+    }
+}

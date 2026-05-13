@@ -37,6 +37,10 @@ export const structure: StructureResolver = (S) =>
         .icon(FaDesktop)
         .title('Contacto')
         .child(S.document().title('Contacto').schemaType('contactPage').documentId('contactPage')),
+      S.listItem()
+        .icon(FaDesktop)
+        .title('Ubicaciones')
+        .child(S.document().title('Ubicaciones').schemaType('locationsPage').documentId('locationsPage')),
       //----------------------------------------------
       S.divider(),
       //----------------------------------------------

@@ -2,7 +2,6 @@ import {createSection} from '../../../utils/helper-createSection'
 import {HERO, SEO, richText} from '../../modules/modules'
 
 const SECTIONS = [
-  {group: {name: 'hero', title: 'Cabecera'}, fields: HERO()},
   {
     group: {name: 'intro', title: 'Introducción'},
     fields: [

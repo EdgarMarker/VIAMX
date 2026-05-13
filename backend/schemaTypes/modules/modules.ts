@@ -128,6 +128,16 @@ export const bool = ({ context, purpose, title }: Props) => {
   }
 }
 
+//*! ----- DATE -----
+
+export const date = ({ context, purpose, title }: Props) => {
+  return {
+    name: `date_${context}_${purpose}`,
+    title: title || 'Fecha',
+    type: 'date',
+  }
+}
+
 //*! ----- REFERENCES -----
 
 export const reference = ({

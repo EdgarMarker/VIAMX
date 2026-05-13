@@ -1,47 +1,115 @@
 import { createSection } from '../../../utils/helper-createSection'
-import { HERO, richText, reference, SEO, METRICS } from '../../modules/modules'
-
-const MAGIC_TITLE = 'Producto'
+import { array, HERO, image, METRICS, obj, reference, richText, SEO, stringText } from '../../modules/modules'
 
 const SECTIONS = [
   { group: { name: 'hero', title: 'Cabecera' }, fields: HERO() },
   {
-    group: { name: `recentProduct`, title: `${MAGIC_TITLE}s Recientes` },
+    group: { name: 'intro', title: 'Introducción' },
     fields: [
       richText({
         type: 'content',
-        context: `recentProduct`,
-        purpose: 'sectionTitle',
-        title: `Título de sección de ${MAGIC_TITLE}s recientes`,
-      }),
-      reference({
-        context: `recentProduct`,
-        purpose: `${MAGIC_TITLE}s`,
-        title: `Referencias de ${MAGIC_TITLE}s`,
-        to: "product",
-        isArray: true,
+        context: 'intro',
+        purpose: 'title',
+        title: 'Título de introducción',
       }),
     ],
   },
   {
-    group: { name: 'recentPosts', title: 'Artículos Recientes' },
+    group: { name: 'about', title: 'Nosotros' },
     fields: [
       richText({
         type: 'content',
-        context: 'recentPosts',
-        purpose: 'sectionTitle',
-        title: 'Título de sección de artículos recientes',
+        context: 'about',
+        purpose: 'title',
+        title: 'Título principal',
       }),
-      reference({
-        context: 'recentPosts',
-        purpose: 'posts',
-        title: 'Referencias de artículos',
-        to: 'post',
-        isArray: true,
+      stringText({
+        type: 'textarea',
+        context: 'about',
+        purpose: 'p1',
+        title: 'Párrafo 1',
+      }),
+      stringText({
+        type: 'textarea',
+        context: 'about',
+        purpose: 'p2',
+        title: 'Párrafo 2',
+      }),
+      METRICS({
+        context: 'about',
+        purpose: 'coldNumbers',
+        title: 'Números fríos',
+      }),
+      image({
+        type: 'img',
+        context: 'about',
+        purpose: 'banner',
+        title: 'Imagen banner',
+      }),
+      richText({
+        type: 'content',
+        context: 'about',
+        purpose: 'title2',
+        title: 'Título secundario',
+      }),
+      stringText({
+        type: 'textarea',
+        context: 'about',
+        purpose: 'p3',
+        title: 'Párrafo 3',
+      }),
+      stringText({
+        type: 'textarea',
+        context: 'about',
+        purpose: 'p4',
+        title: 'Párrafo 4',
       }),
     ],
   },
   {
+    group: { name: 'ourMethod', title: 'Nuestra Metodología' },
+    fields: [
+      richText({
+        type: 'content',
+        context: 'ourMethod',
+        purpose: 'title',
+        title: 'Título de metodología',
+      }),
+      image({
+        type: 'img',
+        context: 'ourMethod',
+        purpose: 'banner',
+        title: 'Imagen banner',
+      }),
+      array({
+        context: 'ourMethod',
+        purpose: 'list',
+        title: 'Listado',
+        of: [
+          obj({
+            context: 'ourMethod',
+            purpose: 'item',
+            title: 'Método',
+            fields: [
+              stringText({
+                type: 'string',
+                context: 'ourMethod',
+                purpose: 'h2',
+                title: 'Título',
+              }),
+              stringText({
+                type: 'textarea',
+                context: 'ourMethod',
+                purpose: 'p',
+                title: 'Información',
+              }),
+            ],
+          }),
+        ],
+      }),
+    ],
+  },
+   {
     group: { name: 'testy', title: 'Sección de Testimonios' },
     fields: [
       richText({
@@ -60,24 +128,6 @@ const SECTIONS = [
     ],
   },
   {
-    group: { name: "results", title: "Resultados" },
-    fields: [
-      richText({
-        type: 'content',
-        context: 'results',
-        purpose: 'sectionTitle',
-        title: 'Título de sección de resultados',
-      }),
-      METRICS(
-        {
-          context: 'results',
-          purpose: 'list',
-          title: 'Lista de resultados',
-        }
-      )
-    ]
-  },
-  {
     group: { name: 'seo', title: 'SEO' },
     fields: SEO(),
   },
@@ -91,7 +141,7 @@ export const homePage = {
   preview: {
     prepare() {
       return {
-        title: 'Vista de Inicio',
+        title: 'Página de Inicio',
       }
     },
   },

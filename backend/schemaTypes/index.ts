@@ -7,6 +7,7 @@ import {
 	catalogPage,
 	contactPage,
 	homePage,
+	locationsPage,
 	post,
 	postAuthor,
 	postCategory,
@@ -23,6 +24,7 @@ export const schemaTypes = [
 	catalogPage,
 	blogPage,
 	contactPage,
+	locationsPage,
 
 	product,
 	product2,

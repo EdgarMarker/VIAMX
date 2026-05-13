@@ -1,6 +1,6 @@
 import { getSanityClient } from "@/app/common/lib/sanity/sanity-client";
 import { IMG, Block, SEO } from "./types";
-import { safeString, safeImage, safeNumber, safeBlockText, safeSEO, safeArray } from "../utils/safe";
+import { safeString, safeImage, safeBlockText, safeSEO } from "../utils/safe";
 
 export interface BlogPageInterface {
   hero: {
@@ -8,12 +8,6 @@ export interface BlogPageInterface {
     rich_hero_title: Block[];
     img_hero_banner: IMG;
     string_hero_cta: string;
-    arr_hero_metrics_list: {
-      string_hero_metrics_item_prefix: string;
-      number_hero_metrics_item_value: number;
-      string_hero_metrics_item_suffix: string;
-      string_hero_metrics_item_label: string;
-    }[];
   };
   post: {
     rich_blog_title: Block[];
@@ -27,12 +21,6 @@ export const mapBlogPage = (raw: any): BlogPageInterface => ({
     rich_hero_title: safeBlockText(raw?.hero?.rich_hero_title),
     img_hero_banner: safeImage(raw?.hero?.img_hero_banner),
     string_hero_cta: safeString(raw?.hero?.string_hero_cta),
-    arr_hero_metrics_list: safeArray(raw?.hero?.arr_hero_metrics_list, (item: any) => ({
-      string_hero_metrics_item_prefix: safeString(item?.string_hero_metrics_item_prefix),
-      number_hero_metrics_item_value: safeNumber(item?.number_hero_metrics_item_value),
-      string_hero_metrics_item_suffix: safeString(item?.string_hero_metrics_item_suffix),
-      string_hero_metrics_item_label: safeString(item?.string_hero_metrics_item_label),
-    })),
   },
   post: {
     rich_blog_title: safeBlockText(raw?.post?.rich_blog_title),
@@ -48,13 +36,7 @@ export const BLOGPAGE_FIELDS = `
       "media": asset->{url},
       "alt": altText
     },
-    string_hero_cta,
-    arr_hero_metrics_list[] {
-      string_hero_metrics_item_prefix,
-      number_hero_metrics_item_value,
-      string_hero_metrics_item_suffix,
-      string_hero_metrics_item_label
-    }
+    string_hero_cta
   },
   post {
     rich_blog_title

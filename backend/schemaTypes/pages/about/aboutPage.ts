@@ -1,185 +1,100 @@
 import { createSection } from '../../../utils/helper-createSection'
-import { array, HERO, image, METRICS, obj, richText, SEO, stringText } from '../../modules/modules'
+import { array, HERO, image, obj, richText, SEO, stringText } from '../../modules/modules'
 
 const SECTIONS = [
   { group: { name: 'hero', title: 'Cabecera' }, fields: HERO() },
   {
-    group: { name: 'intro', title: 'Introducción' },
+    group: { name: 'quote', title: 'Cita' },
     fields: [
       richText({
         type: 'content',
-        context: 'intro',
-        purpose: 'sectionTitle',
-        title: 'Título de sección de introducción',
-      }),
-      image({
-        type: 'img',
-        context: 'intro',
-        purpose: 'sectionImage',
-        title: 'Imagen de sección de introducción',
+        context: 'quote',
+        purpose: 'quote',
+        title: 'Cita',
       }),
     ],
   },
   {
-    group: { name: "values", title: "Valores" },
+    group: { name: 'about', title: 'Nosotros' },
     fields: [
       richText({
         type: 'content',
-        context: 'values',
-        purpose: 'sectionTitle',
-        title: 'Título de sección de valores',
+        context: 'about',
+        purpose: 'title',
+        title: 'Contenido informativo',
+      }),
+      stringText({
+        type: 'textarea',
+        context: 'about',
+        purpose: 'p',
+        title: 'Texto de descripción 1',
+      }),
+      stringText({
+        type: 'textarea',
+        context: 'about',
+        purpose: 'p2',
+        title: 'Texto de descripción 2',
+      }),
+    ],
+  },
+  {
+    group: { name: 'ourHistory', title: 'Nuestra historia' },
+    fields: [
+      richText({
+        type: 'content',
+        context: 'ourHistory',
+        purpose: 'title',
+        title: 'Contenido informativo',
       }),
       image({
         type: 'img',
-        context: 'values',
-        purpose: 'sectionImage',
-        title: 'Imagen de sección de valores',
+        context: 'ourHistory',
+        purpose: 'banner',
+        title: 'Imagen',
+      }),
+    ],
+  },
+  {
+    group: { name: 'ourValues', title: 'Nuestros Valores' },
+    fields: [
+      richText({
+        type: 'content',
+        context: 'ourValues',
+        purpose: 'title',
+        title: 'Contenido informativo',
       }),
       array({
-        context: 'values',
-        purpose: 'valuesList',
-        title: 'Lista de valores',
+        context: 'ourValues',
+        purpose: 'values',
+        title: 'Valores',
         of: [
           obj({
-            context: 'values',
-            purpose: 'valueItem',
+            context: 'ourValues',
+            purpose: 'item',
             title: 'Valor',
             fields: [
               stringText({
                 type: 'string',
-                context: 'values',
-                purpose: 'valueTitle',
-                title: 'Título del valor',
+                context: 'ourValues',
+                purpose: 'h2',
+                title: 'Título de valor',
               }),
               stringText({
                 type: 'textarea',
-                context: 'values',
-                purpose: 'valueDescription',
-                title: 'Descripción del valor',
-              }),
-              image({
-                type: 'icon',
-                context: 'values',
-                purpose: 'valueIcon',
-                title: 'Icono del valor',
+                context: 'ourValues',
+                purpose: 'p',
+                title: 'Información de valor',
               }),
             ],
           }),
         ],
       }),
-    ]
+    ],
   },
   {
-    group: { name: "ourTeam", title: "Nuestro equipo" },
-    fields: [
-      richText({
-        type: 'content',
-        context: 'ourTeam',
-        purpose: 'sectionTitle',
-        title: 'Título de sección de nuestro equipo',
-      }),
-      array({
-        context: 'ourTeam',
-        purpose: 'list',
-        title: 'Lista de nuestro equipo',
-        of: [
-          obj({
-            context: 'ourTeam',
-            purpose: 'item',
-            title: 'Nuestro equipo',
-            fields: [
-              stringText({
-                type: 'string',
-                context: 'ourTeam',
-                purpose: 'name',
-                title: 'Nombre del integrante',
-              }),
-              stringText({
-                type: 'string',
-                context: 'ourTeam',
-                purpose: 'position',
-                title: 'Puesto del integrante',
-              }),
-              stringText({
-                type: 'string',
-                context: 'ourTeam',
-                purpose: 'phone',
-                title: 'Teléfono del integrante (opcional)',
-              }),
-              stringText({
-                type: 'string',
-                context: 'ourTeam',
-                purpose: 'email',
-                title: 'Correo electrónico del integrante (opcional)',
-              }),
-              image({
-                type: 'img',
-                context: 'ourTeam',
-                purpose: 'image',
-                title: 'Imagen de nuestro equipo',
-              }),
-            ],
-          }),
-        ],
-      }),
-    ]
+    group: { name: 'seo', title: 'SEO' },
+    fields: SEO(),
   },
-  {
-    group: { name: "results", title: "Resultados" },
-    fields: [
-      richText({
-        type: 'content',
-        context: 'results',
-        purpose: 'sectionTitle',
-        title: 'Título de sección de resultados',
-      }),
-      METRICS(
-        {
-          context: 'results',
-          purpose: 'list',
-          title: 'Lista de resultados',
-        }
-      )
-    ]
-  },
-  {
-  group: { name: "faqs", title: "Preguntas frecuentes" },
-  fields: [
-    richText({
-      type: "content",
-      context: "faqs",
-      purpose: "sectionTitle",
-      title: "Título de sección FAQ",
-    }),
-    array({
-      context: "faqs",
-      purpose: "list",
-      title: "Lista de preguntas",
-      of: [
-        obj({
-          context: "faqs",
-          purpose: "item",
-          title: "Pregunta",
-          fields: [
-            stringText({
-              type: "string",
-              context: "faqs",
-              purpose: "question",
-              title: "Pregunta",
-            }),
-            richText({
-              type: "content",
-              context: "faqs",
-              purpose: "answer",
-              title: "Respuesta",
-            }),
-          ],
-        }),
-      ],
-    }),
-  ],
-},
-  { group: { name: 'seo', title: 'SEO' }, fields: SEO() },
 ]
 
 export const aboutPage = {
@@ -190,7 +105,7 @@ export const aboutPage = {
   preview: {
     prepare() {
       return {
-        title: 'Vista de Nosotros',
+        title: 'Página Nosotros',
       }
     },
   },

@@ -10,3 +10,4 @@ export * from './catalog/product/product';
 export * from './catalog/product/productCategory';
 export * from './contact/contactPage';
 export * from './home/homePage';
+export * from './locations/locationsPage';

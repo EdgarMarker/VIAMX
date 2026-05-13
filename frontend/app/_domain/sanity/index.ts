@@ -13,4 +13,5 @@ export * from "./product2Category.contract";
 export * from "./productCategory.contract";
 export * from "./contactPage.contract";
 export * from "./homePage.contract";
+export * from "./locationsPage.contract";
 export * from "./testimonial.contract";

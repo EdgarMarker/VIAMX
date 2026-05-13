@@ -7,9 +7,9 @@ import { media } from "sanity-plugin-media";
 
 export default defineConfig({
   name: 'default',
-  title: 'NEXT-TEMPLATE',
+  title: 'VIAMX',
 
-  projectId: '071y7puv',
+  projectId: 'fcx46xqx',
   dataset: 'production',
 
   plugins: [structureTool({structure}), visionTool(), media()],

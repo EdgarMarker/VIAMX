@@ -1,17 +1,12 @@
 import { createSection } from '../../../../utils/helper-createSection'
 import {
   array,
-  bool,
   image,
-  obj,
   reference,
   richText,
-  SEO,
   slug,
   stringText,
 } from '../../../modules/modules'
-
-const MAGIC_TITLE = 'Producto'
 
 const SECTIONS = [
   {
@@ -20,15 +15,27 @@ const SECTIONS = [
       stringText({
         type: 'string',
         context: 'general',
-        purpose: 'title',
-        title: `Titulo del ${MAGIC_TITLE}`,
+        purpose: 'name',
+        title: 'Nombre del producto',
       }),
-      slug({ value: 'general.string_general_title' }),
-      reference({
+      slug({ value: 'general.string_general_name' }),
+      stringText({
+        type: 'textarea',
         context: 'general',
-        purpose: 'category',
-        title: `Categoría del ${MAGIC_TITLE}`,
-        to: 'productCategory',
+        purpose: 'card_dsc',
+        title: 'Descripcion de tarjeta',
+      }),
+      image({
+        type: 'img',
+        context: 'general',
+        purpose: 'card',
+        title: 'Imagen de tarjeta',
+      }),
+      image({
+        type: 'img',
+        context: 'general',
+        purpose: 'hero',
+        title: 'Imagen de cabecera',
       }),
       {
         name: 'date',
@@ -38,75 +45,39 @@ const SECTIONS = [
           dateFormat: 'DD-MM-YYYY',
         },
       },
+    ],
+  },
+  {
+    group: { name: 'intro', title: 'Descripción' },
+    fields: [
+      richText({
+        type: 'content',
+        context: 'intro',
+        purpose: 'title',
+        title: 'Contenido Informativo',
+      }),
       stringText({
         type: 'textarea',
-        context: 'general',
-        purpose: 'cardExcerpt',
-        title: `Descripción breve de ${MAGIC_TITLE}`,
-      }),
-      image({
-        type: 'img',
-        context: 'general',
-        purpose: 'primaryImg',
-        title: `Imagen de ${MAGIC_TITLE}`,
-      }),
-    ],
-  },
-  {
-    group: { name: 'intro', title: 'Introducción' },
-    fields: [
-      richText({
-        type: 'content',
         context: 'intro',
-        purpose: 'description',
-        title: `Descripción "Completa" de ${MAGIC_TITLE}`,
+        purpose: 'p',
+        title: 'Información',
       }),
-      image({
-        type: 'img',
+      stringText({
+        type: 'textarea',
         context: 'intro',
-        purpose: 'img',
-        title: `Imagen de introducción de ${MAGIC_TITLE}`,
-      }),
-    ],
-  },
-  {
-    group: { name: 'models', title: 'Modelos' },
-    fields: [
-      richText({
-        type: 'content',
-        context: 'models',
-        purpose: 'title',
-        title: `Titulo y descripción de la sección de modelos`,
+        purpose: 'p2',
+        title: 'Información',
       }),
       array({
-        context: 'models',
-        purpose: 'list',
-        title: 'Lista de modelos',
+        context: 'intro',
+        purpose: 'gallery',
+        title: 'Galería',
         of: [
-          obj({
-            context: 'models',
-            purpose: 'item',
-            title: 'Modelo',
-            fields: [
-              stringText({
-                type: 'string',
-                context: 'models',
-                purpose: 'modelName',
-                title: `Nombre del modelo`,
-              }),
-              richText({
-                type: 'content',
-                context: 'models',
-                purpose: 'modelDescription',
-                title: `Descripción del modelo`,
-              }),
-              image({
-                type: 'img',
-                context: 'models',
-                purpose: 'modelImg',
-                title: `Imagen del modelo`,
-              }),
-            ],
+          image({
+            type: 'img',
+            context: 'intro',
+            purpose: 'banner',
+            title: 'Imagen de galería',
           }),
         ],
       }),
@@ -119,87 +90,39 @@ const SECTIONS = [
         type: 'content',
         context: 'amenities',
         purpose: 'title',
-        title: `Titulo y descripción de la sección de amenidades`,
+        title: 'Contenido Informativo',
       }),
       reference({
         context: 'amenities',
-        purpose: 'amenityList',
-        title: 'Lista de amenidades',
+        purpose: 'list',
         to: 'amenity',
         isArray: true,
+        title: 'Amenidad',
       }),
     ],
   },
   {
-    group: { name: "dividers", title: "Divisores" },
-    fields: [
-      image({
-        type: 'img',
-        context: 'divider1',
-        purpose: 'dividerImg',
-        title: 'Imagen del primer divisor',
-      }),
-      image({
-        type: 'img',
-        context: 'divider2',
-        purpose: 'dividerImg',
-        title: 'Imagen del segundo divisor',
-      }),
-      image({
-        type: 'img',
-        context: 'divider3',
-        purpose: 'dividerImg',
-        title: 'Imagen del tercer divisor',
-      }),
-    ]
-  },
-  {
-    group: { name: 'video', title: 'Video' },
-    fields: [
-      bool({
-        context: 'video',
-        purpose: 'hasVideo',
-        title: '¿Tiene video?',
-      }),
-      {
-        ...stringText({
-          type: 'string',
-          context: 'video',
-          purpose: 'url',
-          title: 'URL del video (Youtube, etc)',
-        }),
-        hidden: ({ parent }: any) => !parent?.bool_video_hasVideo,
-      },
-      {
-        ...image({
-          type: 'img',
-          context: 'video',
-          purpose: 'fallbackImg',
-          title: 'Imagen de respaldo',
-        }),
-        hidden: ({ parent }: any) => parent?.bool_video_hasVideo,
-      },
-    ],
-  },
-  {
-    group: { name: 'gallery', title: 'Galería' },
+    group: { name: 'location', title: 'Ubicación' },
     fields: [
       richText({
         type: 'content',
-        context: 'gallery',
+        context: 'location',
         purpose: 'title',
-        title: `Titulo y descripción de la sección de galería`,
+        title: 'Contenido Informativo',
       }),
       {
-        name: 'list_gallery',
-        title: 'Galería de imágenes',
-        type: 'array',
-        of: [{ type: 'image' }],
-        options: { layout: 'grid' },
+        name: 'string_location_maps',
+        title: 'Url externo para google maps',
+        type: 'string',
       },
+      stringText({
+        type: 'string',
+        context: 'location',
+        purpose: 'api',
+        title: 'API - Google maps',
+      }),
     ],
   },
-  { group: { name: 'seo', title: 'SEO' }, fields: SEO() },
 ]
 
 export const product = {
@@ -209,8 +132,8 @@ export const product = {
   fields: [...SECTIONS.map(({ group, fields }) => createSection(group, fields))],
   preview: {
     select: {
-      title: 'general.string_general_title',
-      media: 'general.primaryImg',
+      title: 'general.string_general_name',
+      media: 'general.img_general_card',
     },
   },
 }

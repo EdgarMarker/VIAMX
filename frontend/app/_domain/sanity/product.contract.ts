@@ -1,172 +1,97 @@
 import { getSanityClient } from "@/app/common/lib/sanity/sanity-client";
-import { IMG, Block, SEO, SLUG } from "./types";
-import { safeString, safeImage, safeBlockText, safeSEO, safeSlug, safeReference, safeArray } from "../utils/safe";
-import { mapProductCategory, PRODUCTCATEGORY_FIELDS, ProductCategoryInterface } from "./productCategory.contract";
+import { IMG, Block, SLUG } from "./types";
+import { safeString, safeImage, safeBlockText, safeSlug, safeArray } from "../utils/safe";
 import { mapAmenity, AMENITY_FIELDS, AmenityInterface } from "./amenity.contract";
 
 export interface ProductInterface {
   general: {
-    string_general_title: string;
+    string_general_name: string;
     slug: SLUG;
-    ref_general_category: ProductCategoryInterface | null;
+    textarea_general_card_dsc: string;
+    img_general_card: IMG;
+    img_general_hero: IMG;
     date: string;
-    textarea_general_cardExcerpt: string;
-    img_general_primaryImg: IMG;
   };
   intro: {
-    rich_intro_description: Block[];
-    img_intro_img: IMG;
-  };
-  models: {
-    rich_models_title: Block[];
-    arr_models_list: {
-      string_models_modelName: string;
-      rich_models_modelDescription: Block[];
-      img_models_modelImg: IMG;
-    }[];
+    rich_intro_title: Block[];
+    textarea_intro_p: string;
+    textarea_intro_p2: string;
+    arr_intro_gallery: IMG[];
   };
   amenities: {
     rich_amenities_title: Block[];
-    arr_ref_amenities_amenityList: AmenityInterface[];
+    arr_ref_amenities_list: AmenityInterface[];
   };
-  gallery: {
-    rich_gallery_title: Block[];
-    list_gallery: IMG[];
+  location: {
+    rich_location_title: Block[];
+    string_location_maps: string;
+    string_location_api: string;
   };
-  dividers: {
-    img_divider1_dividerImg: IMG;
-    img_divider2_dividerImg: IMG;
-    img_divider3_dividerImg: IMG;
-  };
-  video: {
-    bool_video_hasVideo: boolean;
-    string_video_url: string;
-    img_video_fallbackImg: IMG | null;
-  };
-  seo: SEO;
 }
-
-const safeImageOrNull = (img: any) => {
-  // si no hay url real, regresa null (no placeholder)
-  if (!img?.media?.url) return null;
-  return safeImage(img);
-};
 
 export const mapProduct = (raw: any): ProductInterface => ({
   general: {
-    string_general_title: safeString(raw?.general?.string_general_title),
+    string_general_name: safeString(raw?.general?.string_general_name),
     slug: safeSlug(raw?.general?.slug),
-    ref_general_category: safeReference(raw?.general?.ref_general_category, mapProductCategory),
+    textarea_general_card_dsc: safeString(raw?.general?.textarea_general_card_dsc),
+    img_general_card: safeImage(raw?.general?.img_general_card),
+    img_general_hero: safeImage(raw?.general?.img_general_hero),
     date: safeString(raw?.general?.date),
-    textarea_general_cardExcerpt: safeString(raw?.general?.textarea_general_cardExcerpt),
-    img_general_primaryImg: safeImage(raw?.general?.img_general_primaryImg),
   },
   intro: {
-    rich_intro_description: safeBlockText(raw?.intro?.rich_intro_description),
-    img_intro_img: safeImage(raw?.intro?.img_intro_img),
-  },
-  models: {
-    rich_models_title: safeBlockText(raw?.models?.rich_models_title),
-    arr_models_list: safeArray(raw?.models?.arr_models_list, (item: any) => ({
-      string_models_modelName: safeString(item?.string_models_modelName),
-      rich_models_modelDescription: safeBlockText(item?.rich_models_modelDescription),
-      img_models_modelImg: safeImage(item?.img_models_modelImg),
-    })),
+    rich_intro_title: safeBlockText(raw?.intro?.rich_intro_title),
+    textarea_intro_p: safeString(raw?.intro?.textarea_intro_p),
+    textarea_intro_p2: safeString(raw?.intro?.textarea_intro_p2),
+    arr_intro_gallery: safeArray(raw?.intro?.arr_intro_gallery, safeImage),
   },
   amenities: {
     rich_amenities_title: safeBlockText(raw?.amenities?.rich_amenities_title),
-    arr_ref_amenities_amenityList: safeArray(raw?.amenities?.arr_ref_amenities_amenityList, mapAmenity),
+    arr_ref_amenities_list: safeArray(raw?.amenities?.arr_ref_amenities_list, mapAmenity),
   },
-  gallery: {
-    rich_gallery_title: safeBlockText(raw?.gallery?.rich_gallery_title),
-    list_gallery: safeArray(raw?.gallery?.list_gallery, safeImage),
+  location: {
+    rich_location_title: safeBlockText(raw?.location?.rich_location_title),
+    string_location_maps: safeString(raw?.location?.string_location_maps),
+    string_location_api: safeString(raw?.location?.string_location_api),
   },
-  dividers: {
-    img_divider1_dividerImg: safeImage(raw?.dividers?.img_divider1_dividerImg),
-    img_divider2_dividerImg: safeImage(raw?.dividers?.img_divider2_dividerImg),
-    img_divider3_dividerImg: safeImage(raw?.dividers?.img_divider3_dividerImg),
-  },
-  video: {
-    bool_video_hasVideo: Boolean(raw?.video?.bool_video_hasVideo),
-    string_video_url: safeString(raw?.video?.string_video_url),
-    img_video_fallbackImg: safeImageOrNull(raw?.video?.img_video_fallbackImg),
-  },
-  seo: safeSEO(raw?.seo),
 });
 
 export const PRODUCT_FIELDS = `
   general {
-    string_general_title,
+    string_general_name,
     slug,
-    "ref_general_category": ref_general_category->{ ${PRODUCTCATEGORY_FIELDS} },
-    date,
-    textarea_general_cardExcerpt,
-    "img_general_primaryImg": img_general_primaryImg {
+    textarea_general_card_dsc,
+    "img_general_card": img_general_card {
       "media": asset->{url},
       "alt": altText
-    }
+    },
+    "img_general_hero": img_general_hero {
+      "media": asset->{url},
+      "alt": altText
+    },
+    date
   },
   intro {
-    rich_intro_description,
-    "img_intro_img": img_intro_img {
+    rich_intro_title,
+    textarea_intro_p,
+    textarea_intro_p2,
+    "arr_intro_gallery": arr_intro_gallery[] {
       "media": asset->{url},
       "alt": altText
-    }
-  },
-  models {
-    rich_models_title,
-    arr_models_list[] {
-      string_models_modelName,
-      rich_models_modelDescription,
-      "img_models_modelImg": img_models_modelImg {
-        "media": asset->{url},
-        "alt": altText
-      }
     }
   },
   amenities {
     rich_amenities_title,
-    "arr_ref_amenities_amenityList": arr_ref_amenities_amenityList[]->{ ${AMENITY_FIELDS} }
+    "arr_ref_amenities_list": arr_ref_amenities_list[]->{ ${AMENITY_FIELDS} }
   },
-  gallery {
-    rich_gallery_title,
-    list_gallery[] {
-      "media": asset->{url},
-      "alt": altText
-    }
-  },
-  dividers {
-    "img_divider1_dividerImg": img_divider1_dividerImg {
-      "media": asset->{url},
-      "alt": altText
-    },
-    "img_divider2_dividerImg": img_divider2_dividerImg {
-      "media": asset->{url},
-      "alt": altText
-    },
-    "img_divider3_dividerImg": img_divider3_dividerImg {
-      "media": asset->{url},
-      "alt": altText
-    }
-  },
-  video {
-    bool_video_hasVideo,
-    string_video_url,
-    "img_video_fallbackImg": img_video_fallbackImg {
-       "media": asset->{url},
-       "alt": altText
-    }
-  },
-  seo {
-    string_titleSeo,
-    text_descSeo,
-    text_keySeo
+  location {
+    rich_location_title,
+    string_location_maps,
+    string_location_api
   }
 `;
 
-
 export const getProducts = async (): Promise<ProductInterface[]> => {
-  const query = `*[_type == "product"] { ${PRODUCT_FIELDS} }`;
+  const query = `*[_type == "product"] | order(general.date desc) { ${PRODUCT_FIELDS} }`;
   const data = await getSanityClient().fetch(query);
   return Array.isArray(data) ? data.map(mapProduct) : [];
 };
@@ -175,25 +100,7 @@ export const getProductBySlug = async (
   slug: string
 ): Promise<ProductInterface | null> => {
   if (!slug) return null;
-  console.log("slug:", slug);
   const query = `*[_type == "product" && general.slug.current == $slug][0] { ${PRODUCT_FIELDS} }`;
   const data = await getSanityClient().fetch(query, { slug });
-
   return data ? mapProduct(data) : null;
-};
-
-export const getProductsByCategory = async (
-  category: string
-): Promise<ProductInterface[]> => {
-  const query = `
-    *[
-      _type == "product" &&
-      general.ref_general_category->general.slug.current == $category
-    ] {
-      ${PRODUCT_FIELDS}
-    }
-  `;
-
-  const data = await getSanityClient().fetch(query, { category });
-  return Array.isArray(data) ? data.map(mapProduct) : [];
 };

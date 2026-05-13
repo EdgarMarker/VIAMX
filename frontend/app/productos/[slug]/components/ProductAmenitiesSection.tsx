@@ -1,13 +1,13 @@
+/*
 import Icon from "@/app/common/components/img/SanityIcon";
 import CustomPortableText from "@/app/common/components/text/CustomPortableText";
 import "./amenities.scss";
 
-// ✅ tipo "plano" (lo que llega desde serialize)
+
 type AmenityDTO = {
   _id?: string;
   name: string;
   iconSet?: string;
-  // agrega aquí lo que Icon realmente use (customIcon, iconName, etc.)
   customIcon?: any;
   iconName?: string;
   [key: string]: any;
@@ -39,3 +39,4 @@ export default function ProductAmenitiesSection({ titleBlocks, amenities }: Prop
     </section>
   );
 }
+  */

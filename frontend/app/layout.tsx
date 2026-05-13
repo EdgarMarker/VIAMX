@@ -4,7 +4,7 @@ import LenisProvider from "./common/lib/lenis/LenisProvider";
 import Nav from "./common/components/nav/Nav";
 import WAButton from "./common/components/btn/WAButton";
 import { AnalyticsProvider } from "./common/utils/AnalyticsProvider";
-import { CookieBanner } from "./common/components/banner/CookieBanner";
+//import { CookieBanner } from "./common/components/banner/CookieBanner";
 import Footer from "./common/components/footer/Footer";
 import GsapGlobalEffects from "./common/lib/gsap/GsapGlobalEffects";
 import { getCompany, getMarketing, getProductCategories } from "./_domain/sanity";
@@ -55,7 +55,7 @@ export default async function RootLayout({
             {children}
             <Footer />
             <WAButton data={companyData} />
-            <CookieBanner />
+            {/* <CookieBanner /> */}
           </AnalyticsProvider>
         </LenisProvider>
       </body>

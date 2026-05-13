@@ -19,6 +19,7 @@ export default async function Home() {
 
   return (
     <main id="Home">
+      {/** 
       <Hero variant="home" data={data} />
 
       <Column1
@@ -47,7 +48,7 @@ export default async function Home() {
       </Column1>
 
 
-      
+       * 
       <Column1
         id="section__rProducts"
         sectionClassName="section__rProducts fadeCards"
@@ -69,6 +70,7 @@ export default async function Home() {
       <SliderTesty variant="Home" data={data} />
 
       <PreFooter />
+      */}
 
     </main>
   );

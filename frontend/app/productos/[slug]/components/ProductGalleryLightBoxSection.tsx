@@ -1,3 +1,4 @@
+/*
 "use client";
 
 import React, { useCallback, useMemo, useState } from "react";
@@ -57,14 +58,13 @@ export default function ProductGalleryLightBoxSection({ data }: Props) {
                 aria-label={`Ver imagen ${idx + 1} en grande`}
                 type="button"
               >
-                {/* Si tu ResponsiveImage soporta lazy/sizes, aquí sería clave */}
+              
                 <ResponsiveImage imageData={img} variant="card" />
               </button>
             </li>
           ))}
         </ul>
 
-        {/* ✅ monta Lightbox SOLO cuando se abre */}
         {open && (
           <Lightbox
             open={open}
@@ -78,3 +78,4 @@ export default function ProductGalleryLightBoxSection({ data }: Props) {
     </section>
   );
 }
+*/

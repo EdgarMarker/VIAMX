@@ -1,6 +1,6 @@
 import { getSanityClient } from "@/app/common/lib/sanity/sanity-client";
-import { Block, SEO } from "./types";
-import { safeString, safeBlockText, safeSEO, safeArray } from "../utils/safe";
+import { IMG, Block, SEO } from "./types";
+import { safeString, safeImage, safeBlockText, safeSEO, safeArray } from "../utils/safe";
 
 export interface LocationsPageInterface {
   hero: {

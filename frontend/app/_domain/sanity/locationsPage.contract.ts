@@ -6,6 +6,8 @@ export interface LocationsPageInterface {
   hero: {
     string_hero_h1: string;
     rich_hero_title: Block[];
+    img_hero_banner: IMG;
+    img_hero_banner2: IMG;
     string_hero_cta: string;
   };
   intro: {
@@ -27,6 +29,8 @@ export const mapLocationsPage = (raw: any): LocationsPageInterface => ({
   hero: {
     string_hero_h1: safeString(raw?.hero?.string_hero_h1),
     rich_hero_title: safeBlockText(raw?.hero?.rich_hero_title),
+    img_hero_banner: safeImage(raw?.hero?.img_hero_banner),
+    img_hero_banner2: safeImage(raw?.hero?.img_hero_banner2),
     string_hero_cta: safeString(raw?.hero?.string_hero_cta),
   },
   intro: {
@@ -49,6 +53,10 @@ export const LOCATIONSPAGE_FIELDS = `
     string_hero_h1,
     rich_hero_title,
     "img_hero_banner": img_hero_banner {
+      "media": asset->{url},
+      "alt": altText
+    },
+    "img_hero_banner2": img_hero_banner2 {
       "media": asset->{url},
       "alt": altText
     },

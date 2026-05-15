@@ -2,21 +2,21 @@ import "./page.scss";
 import Link from "next/link";
 import FilterAndPagination from "../common/components/filter/FilterAndPagination";
 import PreFooter from "../common/components/footer/PreFooter";
-import { getBlogPage, getPosts, getPostCategories } from "../_domain/sanity";
+import { getCatalogPage, getCatalogProductSEO, getProducts, getProductCategories } from "../_domain/sanity";
 import { getPageMetadata } from "../common/utils/helper-seo";
 
 export async function generateMetadata() {
-  return getPageMetadata(getBlogPage);
+  return getPageMetadata(getCatalogProductSEO);
 }
 
-export default async function BlogPage() {
-  const pageData = await getBlogPage();
-  const posts = await getPosts();
-  const postCategories = await getPostCategories();
+export default async function CatalogoPage() {
+  const data = await getCatalogPage();
+  const products = await getProducts();
+  const productCategories = await getProductCategories();
 
   const filterOptions = [
     { value: "all", label: "Todas las categorías" },
-    ...postCategories
+    ...productCategories
       .map((cat) => ({
         value: cat.general.slug.current,
         label: cat.general.string_category_name,
@@ -25,25 +25,25 @@ export default async function BlogPage() {
   ];
 
   return (
-    <main id="BlogPage">
+    <main id="CatalogoPage">
 
       <section className="section__breadcrumb">
         <div className="column__1">
           <nav className="breadcrumbs">
             <Link href="/">Inicio</Link>
             {" / "}
-            <span>Blog</span>
+            <span>Desarrollos</span>
           </nav>
         </div>
       </section>
 
-      <section id="sectionBlog" className="section__blog">
+      <section id="section__catalogo" className="section__catalogo">
         <FilterAndPagination
-          allItems={posts}
+          allItems={products}
           filterOptions={filterOptions}
           itemsPerPage={18}
-          dataTitle={pageData.post.rich_blog_title}
-          variant="blog"
+          dataTitle={data.Desarrollo.rich_Desarrollo_title}
+          variant="productos"
         />
       </section>
 

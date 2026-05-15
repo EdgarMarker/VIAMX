@@ -4,16 +4,20 @@ export const NAV_ITEMS = [
     href: "/",
   },
   {
+    title: "Ubicaciones",
+    href: "/ubicaciones",
+  },
+  {
+    title: "Desarrollos",
+    href: "/catalogo",
+  },
+  {
+    title: "Invierte",
+    href: "/invierte",
+  },
+  {
     title: "Nosotros",
     href: "/nosotros",
-  },
-  {
-    title: "Productos",
-    href: "/productos",
-  },
-  {
-    title: "Servicios",
-    href: "/productos2",
   },
   {
     title: "Blog",

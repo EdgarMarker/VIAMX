@@ -241,6 +241,12 @@ export const HERO = (props: any[] = []) => {
       purpose: 'banner',
       title: 'Imagen de la cabecera',
     }),
+    image({
+      type: 'img',
+      context: 'hero',
+      purpose: 'banner2',
+      title: 'Imagen de la cabecera',
+    }),
     stringText({
       type: 'string',
       context: 'hero',

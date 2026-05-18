@@ -1,7 +1,6 @@
 import "./card.scss";
 import React from "react";
 import ResponsiveImage from "../img/ResponsiveImage";
-import Button from "../btn/Button";
 import Link from "next/link";
 import { ProductInterface } from "@/app/_domain/sanity/product.contract";
 
@@ -84,9 +83,9 @@ const ProductCard = ({ data, variant = "catalog" }: Props) => {
             {data.general.date && (
               <span className="card__date">Año: {data.general.date}</span>
             )}
-            <Button variant="link" href={href}>
+            <Link href={href} className="btn">
               IR AL PROYECTO
-            </Button>
+            </Link>
           </div>
         </div>
       );

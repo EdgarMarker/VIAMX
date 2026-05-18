@@ -52,6 +52,7 @@ const SliderTesty = ({ variant, data }: Props) => {
         <section className="section__testimonios fadeCards">
           <div className="column__2">
             <div className="col__left">
+              <h3 className="head__title"><strong>/</strong> Testimonios</h3>
               <CustomPortableText
                 hasImg={false}
                 data={data.testy.rich_testy_testyTitle}

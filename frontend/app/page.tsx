@@ -46,6 +46,7 @@ export default async function Home() {
         sectionClassName="section__intro"
         h3="Inicio"
         portableText={data.intro.rich_intro_title}
+        
       />
 
       {/* ── SOBRE VIA MX ──────────────────────────────────────────────────── */}
@@ -54,7 +55,7 @@ export default async function Home() {
         sectionClassName="section__about"
         leftChildren={
           <>
-            <h3>Sobre Via MX</h3>
+            <h3 className="head__title"><strong>/</strong> Sobre Via MX</h3>
             <CustomPortableText hasImg={false} data={data.about.rich_about_title} />
           </>
         }
@@ -81,7 +82,6 @@ export default async function Home() {
 
       <DivisorImage imageData={data.about.img_about_banner} variant="banner" />
 
-      {/* ── POR QUÉ ELEGIRNOS ─────────────────────────────────────────────── */}
       <Column2
         sectionClassName="section__why"
         leftPortableText={data.about.rich_about_title2}
@@ -100,7 +100,7 @@ export default async function Home() {
         sectionClassName="section__method"
         leftChildren={
           <>
-            <h3>Nuestra Metodología</h3>
+            <h3 className="head__title"><strong>/</strong> Nuestra Metodología</h3>
             <ul className="method__list">
               {data.ourMethod.arr_ourMethod_list.map((item, idx) => (
                 <li key={idx} className="method__item">

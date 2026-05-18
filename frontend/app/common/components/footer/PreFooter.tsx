@@ -9,6 +9,7 @@ const PreFooter = async () => {
     <section className="section__prefooter">
       <div className="column__2">
         <div className="col__left">
+          <h3 className="head__title head__title--white"><strong>/</strong> Contacto</h3>
           <CustomPortableText
             hasImg={false}
             data={data.contact.rich_contact_title}

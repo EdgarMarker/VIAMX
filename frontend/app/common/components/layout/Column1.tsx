@@ -33,6 +33,7 @@ type Props = {
   columnProps?: DivProps;
   h1?: string | null;
   h3?: string | null;
+  h3ClassName?: string | null; 
   h2?: string | null;
   p?: string | null;
   portableText?: Block[] | null;
@@ -50,6 +51,7 @@ export default function Column1({
   columnProps,
   h1,
   h3,
+  h3ClassName,
   h2,
   p,
   portableText,
@@ -64,7 +66,7 @@ export default function Column1({
     <section id={id} className={sectionClassName} {...sectionProps}>
       <div className={`column__1 ${columnClassName}`.trim()} {...columnProps}>
         {h1 ? <h1>{h1}</h1> : null}
-        {h3 ? <h3>{h3}</h3> : null}
+        {h3 ? <h3 className={`head__title ${h3ClassName || ""}`}><strong>/</strong> {h3}</h3> : null}
         {h2 ? <h2>{h2}</h2> : null}
         {p ? <p>{p}</p> : null}
 

@@ -1,19 +1,13 @@
 /* Variables */
 :root {
   /* Color */
-  --color-primary: #2134a0;
-  --color-primary-light: #3954f0;
-  --color-primary-dark: #15205f;
+  --color-primary: #1E282F;
+  --color-secondary: #E3D92D;
 
-  --color-secondary: #1cb03a;
-  --color-secondary-dark: #007c19;
-  --color-secondary-light: #2df054;
+  --color-gray: #4B5358;
+  --color-gray-light: #EAEAE8;
 
-  --color-gray: #93999e;
-  --color-gray-light: #d0d5d8;
-
-  --color-gray-ultra-light: #ececec;
-  --color-white: #ececec;
+  --color-white: #F5F5F3;
   --color-black: #171717;
 
   /* Mensajes */
@@ -378,7 +372,16 @@ a {
 }
 
 
-
+.head__title{
+  color: var(--color-primary);
+  text-transform: uppercase;
+  strong{
+    color: var(--color-secondary);
+  }
+  &--white{
+    color: var(--color-white);
+  }
+}
 
 
 

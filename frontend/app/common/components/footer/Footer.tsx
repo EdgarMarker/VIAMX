@@ -4,12 +4,12 @@ import ResponsiveImage from "../img/ResponsiveImage";
 import ScrollToButton from "../btn/ScrollToButton";
 import Link from "next/link";
 import { phonify } from "../../utils/slugify";
-import { getCompany, getProductCategories } from "@/app/_domain/sanity";
+import { getCompany, getProducts } from "@/app/_domain/sanity";
 
 export default async function Footer() {
 
   const data = await getCompany()
-  const categoriesProduct = await getProductCategories()
+  const products = await getProducts()
 
   return (
     <footer>
@@ -32,11 +32,11 @@ export default async function Footer() {
             <div className="foot__item">
               <h3>Productos</h3>
               <ul role="list">
-                {categoriesProduct.map((item, index) => (
-                  <li key={index ?? ""}>
-                    <a href={`/productos/categoria/${item.general.slug.current}`}>
-                      {item.general.string_category_name}
-                    </a>
+                {products.map((item, index) => (
+                  <li key={index}>
+                    <Link href={`/productos/${item.general.slug.current}`}>
+                      {item.general.string_general_name}
+                    </Link>
                   </li>
                 ))}
               </ul>

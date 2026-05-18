@@ -9,7 +9,7 @@ export const NAV_ITEMS = [
   },
   {
     title: "Desarrollos",
-    href: "/catalogo",
+    href: "/productos",
   },
   {
     title: "Invierte",

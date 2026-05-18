@@ -2,7 +2,6 @@ import "./card.scss";
 import React from "react";
 import ResponsiveImage from "../img/ResponsiveImage";
 import Link from "next/link";
-import Button from "../btn/Button";
 import { PostInterface } from "@/app/_domain/sanity/post.contract";
 
 interface Props {
@@ -38,9 +37,9 @@ const PostCard = ({ data }: Props) => {
         {data.general.textarea_general_cardExcerpt && (
           <p className="card__dsc">{data.general.textarea_general_cardExcerpt}</p>
         )}
-        <Button variant="link" href={`/blog/${data.general.slug.current}`}>
+        <Link href={`/blog/${data.general.slug.current}`} className="btn">
           Leer más
-        </Button>
+        </Link>
       </div>
     </div>
   );

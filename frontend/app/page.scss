@@ -1,5 +1,53 @@
 #Home{
 
+    .section__method {
+        background-color: var(--color-gray-light);
+
+        .method__list {
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        .method__item {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            column-gap: 2rem;
+            padding-block: 2rem;
+            border-bottom: 1px solid rgba(75, 83, 88, 0.2);
+
+            &:first-child {
+                border-top: 1px solid rgba(75, 83, 88, 0.2);
+            }
+
+            h2 {
+                grid-column: 1 / -1;
+                font-size: var(--size-2xl);
+                font-weight: 800;
+                margin-bottom: 0.5rem;
+            }
+
+            .method__step {
+                font-size: var(--size-xs);
+                text-transform: uppercase;
+                color: var(--color-gray);
+                font-weight: 400;
+                margin-bottom: 0;
+            }
+
+            p {
+                font-size: var(--size-sm);
+                margin-bottom: 0;
+            }
+        }
+
+        .col__right {
+            img {
+                border-left: 5px solid var(--color-secondary);
+                aspect-ratio: 1.2 / 1;
+            }
+        }
+    }
+
     .section__rPosts{
         padding-inline: 0%;
         padding-bottom: var(--pad);
@@ -19,20 +67,51 @@
     }
 
     .section__testimonios{
-        padding: var(--pad) 0;
         background-color: var(--color-gray-light);
+
         .column__2{
-            padding-inline: 5%;
+            margin-bottom: var(--gap);
             .col__left{
-                --right: 70;
-                
-                
+                --left: 35;
             }
             .col__right{
-                --right: 30;
+                --right: 65;
                 align-items: flex-end;
+                justify-content: center;
             }
         }
+
+        .column__1{
+            padding: 0;
+        }
+
+        // Pagination dots
+        .splide__pagination{
+            position: static;
+            margin-top: 1.5rem;
+            justify-content: flex-end;
+            padding-right: 5%;
+
+            &__page{
+                background-color: var(--color-gray);
+                opacity: 0.35;
+                width: 10px;
+                height: 10px;
+                transition: background-color 0.3s ease, opacity 0.3s ease;
+
+                &.is-active{
+                    background-color: var(--color-secondary);
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+        }
+    }
+
+
+
+    .section__intro{
+        background-color: var(--color-gray-light);
     }
 }
 

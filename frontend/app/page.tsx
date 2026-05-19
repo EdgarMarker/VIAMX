@@ -5,8 +5,7 @@ import ColdNumbers from "./common/components/text/ColdNumbers";
 import DivisorImage from "./common/components/divisor/DivisorImage";
 import SliderTesty from "./common/components/slider/SliderTesty";
 import CustomPortableText from "./common/components/text/CustomPortableText";
-import ResponsiveImage from "./common/components/img/ResponsiveImage";
-import ScrollToButton from "./common/components/btn/ScrollToButton";
+import Hero from "./common/components/hero/Hero";
 import { getHomePage } from "./_domain/sanity";
 import { getPageMetadata } from "./common/utils/helper-seo";
 import PreFooter from "./common/components/footer/PreFooter";
@@ -20,24 +19,19 @@ export default async function Home() {
 
   return (
     <main id="Home">
-
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <Column2
-        sectionClassName="section__hero section__hero--home"
-        leftChildren={
-          <>
-            <h1>{data.hero.string_hero_h1}</h1>
-            <CustomPortableText hasImg={false} data={data.hero.rich_hero_title} />
-            <div className="btn__wrapper">
-              <ScrollToButton to="#section__intro" className="btn btn__scroll">
-                {data.hero.string_hero_cta}
-              </ScrollToButton>
-            </div>
-          </>
-        }
-        rightChildren={
-          <ResponsiveImage imageData={data.hero.img_hero_banner} variant="hero" />
-        }
+      <Hero
+        variant="primary"
+        data={{
+          h1: data.hero.string_hero_h1,
+          portableText: data.hero.rich_hero_title,
+          cta: {
+            label: data.hero.string_hero_cta,
+            scrollTo: "#section__intro",
+          },
+          imgMain: data.hero.img_hero_banner,
+          imgSecondary: data.hero.img_hero_banner2,
+        }}
       />
 
       {/* ── INICIO – Nuestra Trayectoria ──────────────────────────────────── */}
@@ -46,7 +40,6 @@ export default async function Home() {
         sectionClassName="section__intro"
         h3="Inicio"
         portableText={data.intro.rich_intro_title}
-        
       />
 
       {/* ── SOBRE VIA MX ──────────────────────────────────────────────────── */}
@@ -55,15 +48,20 @@ export default async function Home() {
         sectionClassName="section__about"
         leftChildren={
           <>
-            <h3 className="head__title"><strong>/</strong> Sobre Via MX</h3>
-            <CustomPortableText hasImg={false} data={data.about.rich_about_title} />
+            <h3 className="head__title">
+              <strong>/</strong> Sobre Via MX
+            </h3>
+            <CustomPortableText
+              hasImg={false}
+              data={data.about.rich_about_title}
+            />
           </>
         }
         rightChildren={
-          <>
+          <div className="listado x2">
             <p>{data.about.textarea_about_p1}</p>
             <p>{data.about.textarea_about_p2}</p>
-          </>
+          </div>
         }
       />
 
@@ -87,10 +85,10 @@ export default async function Home() {
         leftPortableText={data.about.rich_about_title2}
         leftButton={{ href: "#section__method", label: "Nuestra Metodología" }}
         rightChildren={
-          <>
+          <div className="listado x2">
             <p>{data.about.textarea_about_p3}</p>
             <p>{data.about.textarea_about_p4}</p>
-          </>
+          </div>
         }
       />
 
@@ -100,7 +98,9 @@ export default async function Home() {
         sectionClassName="section__method"
         leftChildren={
           <>
-            <h3 className="head__title"><strong>/</strong> Nuestra Metodología</h3>
+            <h3 className="head__title">
+              <strong>/</strong> Nuestra Metodología
+            </h3>
             <ul className="method__list">
               {data.ourMethod.arr_ourMethod_list.map((item, idx) => (
                 <li key={idx} className="method__item">
@@ -113,7 +113,10 @@ export default async function Home() {
           </>
         }
         rightPortableText={data.ourMethod.rich_ourMethod_title}
-        rightImage={{ imageData: data.ourMethod.img_ourMethod_banner, variant: "banner" }}
+        rightImage={{
+          imageData: data.ourMethod.img_ourMethod_banner,
+          variant: "banner",
+        }}
       />
 
       {/* ── TESTIMONIOS ───────────────────────────────────────────────────── */}

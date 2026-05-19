@@ -16,10 +16,10 @@ type Props = {
 const SliderTesty = ({ variant, data }: Props) => {
   const mainSliderRef = useRef<any>(null);
   const splideOptions: any = {
-    perPage: 3,
+    perPage: 2,
     perMove: 1,
     arrows: false,
-    pagination: false,
+    pagination: true,
     drag: true,
     autoplay: false,
     gap: "var(--gap)",

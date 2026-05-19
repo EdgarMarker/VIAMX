@@ -45,11 +45,14 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
   return (
     <main id="ProductDetail">
-
       {/* HERO */}
       <section className="section__hero section__hero--product-detail">
         <div className="hero__img">
-          <ResponsiveImage imageData={data.general.img_general_hero} variant="hero" priority />
+          <ResponsiveImage
+            imageData={data.general.img_general_hero}
+            variant="hero"
+            priority
+          />
         </div>
         <div className="hero__overlay">
           <span className="breadcrumbs">
@@ -62,34 +65,38 @@ export default async function ProductDetailPage({ params }: PageProps) {
       </section>
 
       {/* DESCRIPCIÓN GENERAL */}
-      <section className="section__intro" id="section__intro">
-        <div className="column__1">
-          <div className="intro__grid">
-            <div className="intro__col">
-              <h3>/ Descripción General</h3>
-              <CustomPortableText data={data.intro.rich_intro_title} hasImg={false} />
-            </div>
-            <p className="intro__col">{data.intro.textarea_intro_p}</p>
-            <p className="intro__col">{data.intro.textarea_intro_p2}</p>
+      <Column2
+        id="section__intro"
+        sectionClassName="section__intro"
+        leftH3="Descripción General"
+        leftPortableText={data.intro.rich_intro_title}
+        leftHasImgInPortableText={false}
+        rightChildren={
+          <div className="listado x2">
+            <p>{data.intro.textarea_intro_p}</p>
+            <p>{data.intro.textarea_intro_p2}</p>
           </div>
-        </div>
-        {data.intro.arr_intro_gallery.length > 0 && (
-          <GallerySlider images={data.intro.arr_intro_gallery} />
-        )}
-      </section>
+        }
+      />
 
       {/* AMENIDADES */}
       <section className="section__amenities" id="section__amenities">
         <div className="column__1">
           <h3>/ Amenidades</h3>
-          <CustomPortableText data={data.amenities.rich_amenities_title} hasImg={false} />
+          <CustomPortableText
+            data={data.amenities.rich_amenities_title}
+            hasImg={false}
+          />
         </div>
         <div className="column__1">
           <ul className="listado x4 amenities__grid">
             {data.amenities.arr_ref_amenities_list.map((amenity, idx) => (
               <li key={idx} className="amenity__card">
                 <div className="amenity__icon">
-                  <ResponsiveImage imageData={amenity.customIcon} variant="icon" />
+                  <ResponsiveImage
+                    imageData={amenity.customIcon}
+                    variant="icon"
+                  />
                 </div>
                 <span>{amenity.name}</span>
               </li>
@@ -105,7 +112,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
         leftChildren={
           <>
             <h3>/ Ubicación</h3>
-            <CustomPortableText data={data.location.rich_location_title} hasImg={false} />
+            <CustomPortableText
+              data={data.location.rich_location_title}
+              hasImg={false}
+            />
             {data.location.string_location_maps && (
               <a
                 href={data.location.string_location_maps}

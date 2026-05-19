@@ -9,15 +9,15 @@ interface Props {
 const TestyCard = ({ data }: Props) => {
   return (
     <div className="card card__testy">
-      <div className="testy__stars">
-        <div style={{ width: `${data.grade}%` }}></div>
-      </div>
       <div className="testy__opinion">
         <p>{data.textarea_testimonial_content}</p>
       </div>
       <div className="testy__author">
         <h3>{data.string_testimonial_authorName}</h3>
         <h4>{data.string_testimonial_authorLocation}</h4>
+      </div>
+      <div className="testy__stars">
+        <div style={{ width: `${data.grade}%` }}></div>
       </div>
     </div>
   );

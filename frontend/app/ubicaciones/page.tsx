@@ -1,9 +1,8 @@
 import "./page.scss";
 import Column2 from "../common/components/layout/Column2";
-import ResponsiveImage from "../common/components/img/ResponsiveImage";
 import CustomPortableText from "../common/components/text/CustomPortableText";
-import ScrollToButton from "../common/components/btn/ScrollToButton";
 import Accordion from "../common/components/accordion/Accordion";
+import Hero from "../common/components/hero/Hero";
 import PreFooter from "../common/components/footer/PreFooter";
 import { getLocationsPage } from "../_domain/sanity";
 import { getPageMetadata } from "../common/utils/helper-seo";
@@ -16,26 +15,21 @@ export default async function UbicacionesPage() {
   const data = await getLocationsPage();
 
   return (
-    <main id="UbicacionesPage">
+    <main id="locations">
 
       {/* HERO */}
-      <Column2
-        sectionClassName="section__hero section__hero--ubicaciones"
-        leftChildren={
-          <>
-            <h1>{data.hero.string_hero_h1}</h1>
-            <CustomPortableText hasImg={false} data={data.hero.rich_hero_title} />
-            <ScrollToButton to="#section__intro" className="btn btn__scroll">
-              {data.hero.string_hero_cta}
-            </ScrollToButton>
-          </>
-        }
-        rightChildren={
-          <>
-            <ResponsiveImage imageData={data.hero.img_hero_banner} variant="hero" />
-            <ResponsiveImage imageData={data.hero.img_hero_banner2} variant="hero" />
-          </>
-        }
+      <Hero
+        variant="primary"
+        data={{
+          h1: data.hero.string_hero_h1,
+          portableText: data.hero.rich_hero_title,
+          cta: {
+            label: data.hero.string_hero_cta,
+            scrollTo: "#section__intro",
+          },
+          imgMain: data.hero.img_hero_banner,
+          imgSecondary: data.hero.img_hero_banner2,
+        }}
       />
 
       {/* MAPA DE UBICACIONES */}

@@ -27,6 +27,7 @@ type SectionProps = React.ComponentPropsWithoutRef<"section"> & DataAttributes;
 type ColumnProps = {
   h1?: string | null;
   h3?: string | null;
+  h3ClassName?: string | null;
   h2?: string | null;
   p?: string | null;
   portableText?: Block[] | null;
@@ -39,6 +40,7 @@ type ColumnProps = {
 function ColumnContent({
   h1,
   h3,
+  h3ClassName,
   h2,
   p,
   portableText,
@@ -52,7 +54,7 @@ function ColumnContent({
   return (
     <>
       {h1 ? <h1>{h1}</h1> : null}
-      {h3 ? <h3>{h3}</h3> : null}
+      {h3 ? <h3 className={`head__title ${h3ClassName || ""}`.trim()}><strong>/</strong> {h3}</h3> : null}
       {h2 ? <h2>{h2}</h2> : null}
       {p ? <p>{p}</p> : null}
 
@@ -98,6 +100,7 @@ type Props = {
 
   leftH1?: string | null;
   leftH3?: string | null;
+  leftH3ClassName?: string | null;
   leftH2?: string | null;
   leftP?: string | null;
   leftPortableText?: Block[] | null;
@@ -108,6 +111,7 @@ type Props = {
 
   rightH1?: string | null;
   rightH3?: string | null;
+  rightH3ClassName?: string | null;
   rightH2?: string | null;
   rightP?: string | null;
   rightPortableText?: Block[] | null;
@@ -130,6 +134,7 @@ export default function Column2({
   sectionProps,
   leftH1,
   leftH3,
+  leftH3ClassName,
   leftH2,
   leftP,
   leftPortableText,
@@ -139,6 +144,7 @@ export default function Column2({
   leftChildren,
   rightH1,
   rightH3,
+  rightH3ClassName,
   rightH2,
   rightP,
   rightPortableText,
@@ -183,6 +189,7 @@ export default function Column2({
               <ColumnContent
                 h1={leftH1}
                 h3={leftH3}
+                h3ClassName={leftH3ClassName}
                 h2={leftH2}
                 p={leftP}
                 portableText={leftPortableText}
@@ -202,6 +209,7 @@ export default function Column2({
               <ColumnContent
                 h1={rightH1}
                 h3={rightH3}
+                h3ClassName={rightH3ClassName}
                 h2={rightH2}
                 p={rightP}
                 portableText={rightPortableText}

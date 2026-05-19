@@ -1,9 +1,8 @@
 import "./page.scss";
 import Column1 from "../common/components/layout/Column1";
 import Column2 from "../common/components/layout/Column2";
-import ResponsiveImage from "../common/components/img/ResponsiveImage";
 import CustomPortableText from "../common/components/text/CustomPortableText";
-import ScrollToButton from "../common/components/btn/ScrollToButton";
+import Hero from "../common/components/hero/Hero";
 import PreFooter from "../common/components/footer/PreFooter";
 import { getAboutPage } from "../_domain/sanity";
 import { getPageMetadata } from "../common/utils/helper-seo";
@@ -16,26 +15,21 @@ export default async function NosotrosPage() {
   const data = await getAboutPage();
 
   return (
-    <main id="NosotrosPage">
+    <main id="About">
 
       {/* HERO */}
-      <Column2
-        sectionClassName="section__hero section__hero--nosotros"
-        leftChildren={
-          <>
-            <h1>{data.hero.string_hero_h1}</h1>
-            <CustomPortableText hasImg={false} data={data.hero.rich_hero_title} />
-            <ScrollToButton to="#section__quote" className="btn btn__scroll">
-              {data.hero.string_hero_cta}
-            </ScrollToButton>
-          </>
-        }
-        rightChildren={
-          <>
-            <ResponsiveImage imageData={data.hero.img_hero_banner} variant="hero" />
-            <ResponsiveImage imageData={data.hero.img_hero_banner2} variant="hero" />
-          </>
-        }
+      <Hero
+        variant="primary"
+        data={{
+          h1: data.hero.string_hero_h1,
+          portableText: data.hero.rich_hero_title,
+          cta: {
+            label: data.hero.string_hero_cta,
+            scrollTo: "#section__quote",
+          },
+          imgMain: data.hero.img_hero_banner,
+          imgSecondary: data.hero.img_hero_banner2,
+        }}
       />
 
       {/* CITA */}
@@ -50,14 +44,14 @@ export default async function NosotrosPage() {
       <Column2
         id="section__about"
         sectionClassName="section__about"
-        leftH3="NOSOTROS"
+        leftH3="Nosotros"
         leftPortableText={data.about.rich_about_title}
         leftHasImgInPortableText={false}
         rightChildren={
-          <>
+          <div className="listado x2">
             <p>{data.about.textarea_about_p}</p>
             <p>{data.about.textarea_about_p2}</p>
-          </>
+          </div>
         }
       />
 
@@ -65,7 +59,8 @@ export default async function NosotrosPage() {
       <Column2
         id="section__our-history"
         sectionClassName="section__our-history"
-        leftH3="/ NUESTRA HISTORIA"
+        leftH3="Nuestra Historia"
+        leftH3ClassName="head__title--white"
         leftPortableText={data.ourHistory.rich_ourHistory_title}
         leftHasImgInPortableText={false}
         rightImage={{ imageData: data.ourHistory.img_ourHistory_banner, variant: "banner" }}
@@ -75,7 +70,7 @@ export default async function NosotrosPage() {
       <Column2
         id="section__our-values"
         sectionClassName="section__our-values"
-        leftH3="/ NUESTROS VALORES"
+        leftH3="Nuestros Valores"
         leftPortableText={data.ourValues.rich_ourValues_title}
         leftHasImgInPortableText={false}
         rightChildren={

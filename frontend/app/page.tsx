@@ -1,4 +1,5 @@
 import "./page.scss";
+import Link from "next/link";
 import Column1 from "./common/components/layout/Column1";
 import Column2 from "./common/components/layout/Column2";
 import ColdNumbers from "./common/components/text/ColdNumbers";
@@ -6,7 +7,8 @@ import DivisorImage from "./common/components/divisor/DivisorImage";
 import SliderTesty from "./common/components/slider/SliderTesty";
 import CustomPortableText from "./common/components/text/CustomPortableText";
 import Hero from "./common/components/hero/Hero";
-import { getHomePage } from "./_domain/sanity";
+import TimelineIntro from "./common/components/timeline/TimelineIntro";
+import { getHomePage, getProducts } from "./_domain/sanity";
 import { getPageMetadata } from "./common/utils/helper-seo";
 import PreFooter from "./common/components/footer/PreFooter";
 
@@ -15,7 +17,7 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  const data = await getHomePage();
+  const [data, products] = await Promise.all([getHomePage(), getProducts()]);
 
   return (
     <main id="Home">
@@ -40,7 +42,21 @@ export default async function Home() {
         sectionClassName="section__intro"
         h3="Inicio"
         portableText={data.intro.rich_intro_title}
-      />
+      >
+        <TimelineIntro
+          items={products.slice().reverse().map((p) => ({
+            title: p.general.string_general_name,
+            year: p.general.date?.slice(0, 4) ?? '',
+            image: p.general.img_general_card,
+            slug: p.general.slug.current,
+          }))}
+        />
+        <div className="timeline__cta">
+          <Link href="/productos" className="btn btn--right">
+            más información
+          </Link>
+        </div>
+      </Column1>
 
       {/* ── SOBRE VIA MX ──────────────────────────────────────────────────── */}
       <Column2

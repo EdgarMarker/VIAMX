@@ -4,7 +4,7 @@ import ResponsiveImage from "../img/ResponsiveImage";
 import Link from "next/link";
 import { ProductInterface } from "@/app/_domain/sanity/product.contract";
 
-type Variant = "catalog" | "primary" | "timeline";
+type Variant = "catalog" | "primary";
 
 interface Props {
   data: ProductInterface;
@@ -35,27 +35,6 @@ const ProductCard = ({ data, variant = "catalog" }: Props) => {
             {data.general.date && (
               <span className="card__date">Año: {data.general.date}</span>
             )}
-          </div>
-        </div>
-      );
-
-    // Tarjeta vertical: cabecera amarilla (nombre + año), imagen grande, CTA abajo
-    case "timeline":
-      return (
-        <div className="card card__product card__product--timeline">
-          <div className="card__header">
-            <h3 className="card__name">{data.general.string_general_name}</h3>
-            {data.general.date && (
-              <span className="card__date">{data.general.date}</span>
-            )}
-          </div>
-          <div className="card__img">
-            <Link href={href}>
-              <ResponsiveImage imageData={data.general.img_general_card} variant="banner" />
-            </Link>
-          </div>
-          <div className="card__footer">
-            <Link href={href} className="card__cta">Ver proyecto</Link>
           </div>
         </div>
       );

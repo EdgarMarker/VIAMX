@@ -8,6 +8,7 @@ import SliderTesty from "./common/components/slider/SliderTesty";
 import CustomPortableText from "./common/components/text/CustomPortableText";
 import Hero from "./common/components/hero/Hero";
 import TimelineIntro from "./common/components/timeline/TimelineIntro";
+import ProductCard from "./common/components/card/ProductCard";
 import { getHomePage, getProducts } from "./_domain/sanity";
 import { getPageMetadata } from "./common/utils/helper-seo";
 import PreFooter from "./common/components/footer/PreFooter";
@@ -137,6 +138,26 @@ export default async function Home() {
 
       {/* ── TESTIMONIOS ───────────────────────────────────────────────────── */}
       <SliderTesty variant="Home" data={data} />
+
+      {/* ── DESARROLLOS DESTACADOS ────────────────────────────────────────── */}
+      <Column1
+        id="section__recentProjects"
+        sectionClassName="section__recentProjects fadeInOut"
+        h3="Desarrollos Destacados"
+        h3ClassName="head__title--white"
+        portableText={data.recentProjects.rich_recentProjects_title}
+      >
+        <div className="listado x4">
+          {data.recentProjects.arr_ref_recentProjects_projectsList.map((product, idx) => (
+            <ProductCard key={idx} data={product} variant="primary" />
+          ))}
+        </div>
+        <div className="recentProjects__cta">
+          <Link href="/productos" className="btn btn--right">
+            VER TODOS LOS PROYECTOS
+          </Link>
+        </div>
+      </Column1>
 
       <PreFooter />
     </main>

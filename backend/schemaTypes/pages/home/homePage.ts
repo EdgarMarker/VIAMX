@@ -128,6 +128,24 @@ const SECTIONS = [
     ],
   },
   {
+    group: {name: "recentProjects", title: "Desarrollos Recientes"},
+    fields: [
+      richText({
+        type: 'content',
+        context: 'recentProjects',
+        purpose: 'title',
+        title: 'Título de Proyectos Recientes',
+      }),
+      reference({
+        context: 'recentProjects',
+        purpose: 'projectsList',
+        title: 'Lista de Proyectos',
+        isArray: true,
+        to: 'product' as any,
+      }),
+    ],
+  },
+  {
     group: { name: 'seo', title: 'SEO' },
     fields: SEO(),
   },

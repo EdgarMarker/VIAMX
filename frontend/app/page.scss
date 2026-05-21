@@ -110,6 +110,16 @@
 
 
 
+    .section__recentProjects {
+        background-color: var(--color-primary);
+
+        .recentProjects__cta {
+            display: flex;
+            justify-content: center;
+            place-self: center;
+        }
+    }
+
     .section__intro{
         background-color: var(--color-gray-light);
 
@@ -324,6 +334,12 @@
             }
         }
 
+        .section__recentProjects {
+            .recentProjects__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
     }
 
 }
@@ -333,6 +349,14 @@
 
 /*  Móvil  */
 @media only screen and (max-width: 768px) {
+
+    #Home {
+        .section__recentProjects {
+            .recentProjects__grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
 
 
 

@@ -29,11 +29,14 @@ const ProductCard = ({ data, variant = "catalog" }: Props) => {
             <h3 className="card__name">
               <Link href={href}>{data.general.string_general_name}</Link>
             </h3>
+            <hr className="card__divider" />
             {data.general.textarea_general_card_dsc && (
-              <p className="card__dsc">{data.general.textarea_general_card_dsc}</p>
+              <p className="card__dsc">
+                <strong>Colonia: {data.general.textarea_general_card_dsc}</strong>
+              </p>
             )}
             {data.general.date && (
-              <span className="card__date">Año: {data.general.date}</span>
+              <span className="card__date">Año: {data.general.date.slice(0, 4)}</span>
             )}
           </div>
         </div>

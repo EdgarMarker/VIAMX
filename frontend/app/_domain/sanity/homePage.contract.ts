@@ -2,6 +2,7 @@ import { getSanityClient } from "@/app/common/lib/sanity/sanity-client";
 import { IMG, Block, SEO } from "./types";
 import { safeString, safeImage, safeNumber, safeBlockText, safeSEO, safeArray, safeReference } from "../utils/safe";
 import { mapTestimonial, TESTIMONIAL_FIELDS, TestimonialInterface } from "./testimonial.contract";
+import { mapProduct, PRODUCT_FIELDS, ProductInterface } from "./product.contract";
 
 export interface HomePageInterface {
   hero: {
@@ -41,6 +42,10 @@ export interface HomePageInterface {
   testy: {
     rich_testy_testyTitle: Block[];
     arr_ref_testy_testyList: TestimonialInterface[];
+  };
+  recentProjects: {
+    rich_recentProjects_title: Block[];
+    arr_ref_recentProjects_projectsList: ProductInterface[];
   };
   seo: SEO;
 }
@@ -83,6 +88,10 @@ export const mapHomePage = (raw: any): HomePageInterface => ({
   testy: {
     rich_testy_testyTitle: safeBlockText(raw?.testy?.rich_testy_testyTitle),
     arr_ref_testy_testyList: safeArray(raw?.testy?.arr_ref_testy_testyList, mapTestimonial),
+  },
+  recentProjects: {
+    rich_recentProjects_title: safeBlockText(raw?.recentProjects?.rich_recentProjects_title),
+    arr_ref_recentProjects_projectsList: safeArray(raw?.recentProjects?.arr_ref_recentProjects_projectsList, mapProduct),
   },
   seo: safeSEO(raw?.seo),
 });
@@ -140,6 +149,10 @@ export const HOMEPAGE_FIELDS = `
   testy {
     rich_testy_testyTitle,
     "arr_ref_testy_testyList": arr_ref_testy_testyList[]->{ ${TESTIMONIAL_FIELDS} }
+  },
+  recentProjects {
+    rich_recentProjects_title,
+    "arr_ref_recentProjects_projectsList": arr_ref_recentProjects_projectsList[]->{ ${PRODUCT_FIELDS} }
   },
   seo {
     string_titleSeo,

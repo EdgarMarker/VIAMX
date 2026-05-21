@@ -33,38 +33,48 @@ export default function TimelineIntro({ items }: { items: TimelineProduct[] }) {
   useGSAP(
     () => {
       const section = containerRef.current?.closest('section');
-      const triggerOptions = {
-        trigger: section ?? containerRef.current,
-        start: 'top center',
-        end: 'center center',
-        scrub: true,
-      };
+      const STAGGER = 0.4;
 
-      gsap.from('.timeline__dot', {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section ?? containerRef.current,
+          start: 'top center',
+          end: 'center center',
+          scrub: true,
+        },
+      });
+
+      tl.from('.timeline__dot', {
         opacity: 0,
         scale: 0.06,
         duration: 1,
         ease: 'elastic.out(1,0.5)',
-        stagger: 0.4,
-        scrollTrigger: { ...triggerOptions },
-      });
+        stagger: STAGGER,
+      }, 0);
 
-      // Líneas horizontales
-      gsap.from('.timeline__item:not(.timeline__item--connector) .timeline__line', {
-        width: '0px',
-        duration: 1,
-        ease: 'power4.out',
-        stagger: 0.4,
-        scrollTrigger: { ...triggerOptions },
-      });
+      // líneas por fila — cada row arranca cuando su primer dot ya es visible
+      let dotOffset = 0;
+      rows.forEach((row, rowIdx) => {
+        const isLastRow = rowIdx === rows.length - 1;
+        const rowStart = dotOffset * STAGGER;
+        const rowEl = `.timeline__row:nth-child(${rowIdx + 1})`;
 
-      // Líneas conectoras verticales (animan height, no width)
-      gsap.from('.timeline__item--connector .timeline__line', {
-        height: '0px',
-        duration: 1,
-        ease: 'power4.out',
-        stagger: 0.4,
-        scrollTrigger: { ...triggerOptions },
+        tl.from(`${rowEl} .timeline__item:not(.timeline__item--connector) .timeline__line`, {
+          width: '0px',
+          duration: 1,
+          ease: 'power4.out',
+          stagger: STAGGER,
+        }, rowStart);
+
+        if (!isLastRow) {
+          tl.from(`${rowEl} .timeline__item--connector .timeline__line`, {
+            height: '0px',
+            duration: 1,
+            ease: 'power4.out',
+          }, rowStart + (row.length - 1) * STAGGER);
+        }
+
+        dotOffset += row.length;
       });
     },
     { scope: containerRef },

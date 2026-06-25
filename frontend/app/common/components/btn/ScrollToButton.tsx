@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useLenis } from "../../lib/lenis/LenisProvider";
+import Button from "./Button";
 
 type Props = {
   to: string;
@@ -10,27 +10,10 @@ type Props = {
   offset?: number;
 };
 
-export default function ScrollToButton({ to, children, className, offset = 0 }: Props) {
-  const lenis = useLenis();
-
+export default function ScrollToButton({ to, children, className, offset }: Props) {
   return (
-    <button
-      type="button"
-      className={className}
-      onClick={() => {
-        const el = document.querySelector<HTMLElement>(to);
-        if (!el) return;
-
-        if (lenis) {
-          lenis.scrollTo(el, { offset });
-          return;
-        }
-
-        const y = window.scrollY + el.getBoundingClientRect().top - offset;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      }}
-    >
+    <Button variant="scroll" to={to} offset={offset} className={className}>
       {children}
-    </button>
+    </Button>
   );
 }

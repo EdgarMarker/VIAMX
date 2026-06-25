@@ -1,5 +1,5 @@
 import "./page.scss";
-import Link from "next/link";
+import Button from "./common/components/btn/Button";
 import Column1 from "./common/components/layout/Column1";
 import Column2 from "./common/components/layout/Column2";
 import ColdNumbers from "./common/components/text/ColdNumbers";
@@ -53,16 +53,16 @@ export default async function Home() {
           }))}
         />
         <div className="timeline__cta">
-          <Link href="/productos" className="btn btn--right">
+          <Button variant="link" href="/productos" className="btn--right">
             más información
-          </Link>
+          </Button>
         </div>
       </Column1>
 
       {/* ── SOBRE VIA MX ──────────────────────────────────────────────────── */}
       <Column2
         id="section__about"
-        sectionClassName="section__about"
+        sectionClassName="core-section"
         leftChildren={
           <>
             <h3 className="head__title">
@@ -98,7 +98,7 @@ export default async function Home() {
       <DivisorImage imageData={data.about.img_about_banner} variant="banner" />
 
       <Column2
-        sectionClassName="section__why"
+        sectionClassName="core-section"
         leftPortableText={data.about.rich_about_title2}
         leftButton={{ href: "#section__method", label: "Nuestra Metodología" }}
         rightChildren={
@@ -153,9 +153,9 @@ export default async function Home() {
           ))}
         </div>
         <div className="recentProjects__cta">
-          <Link href="/productos" className="btn btn--right">
+          <Button variant="link" href="/productos" className="btn--right">
             VER TODOS LOS PROYECTOS
-          </Link>
+          </Button>
         </div>
       </Column1>
 

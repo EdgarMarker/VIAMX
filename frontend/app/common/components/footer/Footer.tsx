@@ -1,7 +1,6 @@
 import "./footer.scss";
 import { NAV_ITEMS } from "@/app/common/utils/constants";
 import ResponsiveImage from "../img/ResponsiveImage";
-import ScrollToButton from "../btn/ScrollToButton";
 import Link from "next/link";
 import { phonify } from "../../utils/slugify";
 import { getCompany, getProducts } from "@/app/_domain/sanity";

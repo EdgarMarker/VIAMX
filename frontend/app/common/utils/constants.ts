@@ -12,10 +12,6 @@ export const NAV_ITEMS = [
     href: "/productos",
   },
   {
-    title: "Invierte",
-    href: "/invierte",
-  },
-  {
     title: "Nosotros",
     href: "/nosotros",
   },

@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+import Button from "@/app/common/components/btn/Button";
 import CustomPortableText from "@/app/common/components/text/CustomPortableText";
 import ResponsiveImage from "@/app/common/components/img/ResponsiveImage";
 import type { IMG as ImageType, Block } from "@/app/_domain/sanity/types";
@@ -63,14 +63,14 @@ function ColumnContent({
       ) : null}
 
       {button?.href && button?.label ? (
-        <Link
+        <Button
+          variant="link"
           href={button.href}
-          className={button.className ?? "btn"}
+          className={button.className}
           target={button.target}
-          rel={button.rel}
         >
           {button.label}
-        </Link>
+        </Button>
       ) : null}
 
       {image?.imageData ? (

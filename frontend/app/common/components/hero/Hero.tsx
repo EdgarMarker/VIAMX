@@ -5,7 +5,7 @@ import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import ResponsiveImage from "@/app/common/components/img/ResponsiveImage";
 import CustomPortableText from "@/app/common/components/text/CustomPortableText";
-import ScrollToButton from "@/app/common/components/btn/ScrollToButton";
+import Button from "@/app/common/components/btn/Button";
 import { startHero } from "@/app/common/lib/gsap/hero.animations";
 import type { IMG, Block } from "@/app/_domain/sanity/types";
 import Link from "next/link";
@@ -77,13 +77,13 @@ const Hero = ({ variant, data, sectionClassName = "" }: HeroProps) => {
               {data.cta?.label && (
                 <div className="btn__wrapper">
                   {data.cta.scrollTo ? (
-                    <ScrollToButton to={data.cta.scrollTo} className="btn btn__scroll">
+                    <Button variant="scroll" to={data.cta.scrollTo}>
                       {data.cta.label}
-                    </ScrollToButton>
+                    </Button>
                   ) : data.cta.href ? (
-                    <Link href={data.cta.href} className="btn btn__scroll">
+                    <Button variant="link" href={data.cta.href}>
                       {data.cta.label}
-                    </Link>
+                    </Button>
                   ) : null}
                 </div>
               )}

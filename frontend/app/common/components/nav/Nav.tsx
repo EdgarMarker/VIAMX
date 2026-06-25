@@ -1,48 +1,40 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
 "use client";
 import "./nav.scss";
 import { useRef } from "react";
 import { useNavScrollShrink, useNavHideOnScroll } from "./nav.animation";
-import ResponsiveImage from "../img/ResponsiveImage";
 import { useNavigation } from "../../hooks/useNavigation";
-import { CompanyInterface } from "@/app/_domain/sanity/company.contract";
+import Logo from "./Logo";
 import Link from "next/link";
 
-interface Props {
-  companyData?: CompanyInterface;
-}
+const YELLOW_ROUTES = ["/", "/nosotros"];
+const YELLOW_PATTERN = /^\/productos\/[^/]+$/;
 
-const Nav = ({ companyData }: Props) => {
+const Nav = () => {
   const headerRef = useRef<HTMLElement | null>(null);
   useNavScrollShrink(headerRef);
-  const {
-    isMenuOpen,
-    menuRef,
-    toggleRef,
-    toggleMenu,
-    closeMenu,
-    isLinkActive,
-    navItems,
-  } = useNavigation();
+  const { isMenuOpen, menuRef, toggleRef, toggleMenu, closeMenu, isLinkActive, navItems, pathname } =
+    useNavigation();
   useNavHideOnScroll(headerRef, isMenuOpen);
 
+  const isYellowVariant =
+    YELLOW_ROUTES.includes(pathname) || YELLOW_PATTERN.test(pathname);
+
+  const logoColor = isYellowVariant ? "var(--color-secondary)" : "var(--color-black)";
+  const navLinks = navItems.filter((item) => item.href !== "/contacto");
 
   return (
-    <header id="Header" ref={headerRef}>
+    <header
+      id="Header"
+      ref={headerRef}
+      data-nav-variant={isYellowVariant ? "yellow" : "dark"}
+    >
       <nav>
         <Link href="/" className="logo" aria-label="Ir al inicio">
-          {companyData?.general.icon_general_navLogo ? (
-            <ResponsiveImage
-              imageData={companyData?.general.icon_general_navLogo}
-              variant="icon"
-            />
-          ) : (
-            <span>LOGO</span>
-          )}
+          <Logo fill={logoColor} />
         </Link>
 
         <ul role="list" className="nav-links">
-          {navItems.map((item) => {
+          {navLinks.map((item) => {
             const active = isLinkActive(item.href);
             return (
               <li key={item.href}>
@@ -58,6 +50,10 @@ const Nav = ({ companyData }: Props) => {
           })}
         </ul>
 
+        <Link href="/contacto" className="btn__nav-cta">
+          Agendar llamada
+        </Link>
+
         <button
           ref={toggleRef}
           type="button"
@@ -71,8 +67,6 @@ const Nav = ({ companyData }: Props) => {
           <span></span>
         </button>
       </nav>
-
-      
 
       <div
         ref={menuRef}
@@ -97,6 +91,7 @@ const Nav = ({ companyData }: Props) => {
           })}
         </ul>
       </div>
+
       <div
         className={`menu-overlay ${isMenuOpen ? "active" : ""}`}
         onClick={closeMenu}

@@ -183,6 +183,19 @@ main {
   }
 }
 
+.core-section{
+    display: flex;
+    margin-bottom: 10rem;
+    .col__left{
+      flex-grow: 40;
+    }
+    .col__right{
+      flex-grow: 60;
+      grid-template-columns: var(--grid2);
+    }
+
+}
+
 .listado {
   display: grid;
   grid-template-columns: var(--grid3);

@@ -50,7 +50,7 @@ export default async function RootLayout({
 
         <LenisProvider>
           <AnalyticsProvider config={analyticsConfig}>
-            <Nav companyData={companyData} />
+            <Nav />
             <GsapGlobalEffects />
             {children}
             <Footer />

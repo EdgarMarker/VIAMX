@@ -51,25 +51,6 @@
     margin-top: 1.5rem;
   }
 
-  .btn__scroll {
-    background-color: transparent;
-    color: var(--color-secondary);
-    border: 1.5px solid var(--color-secondary);
-
-    &::after {
-      border-color: var(--color-secondary);
-    }
-
-    &:hover {
-      background-color: var(--color-secondary);
-      color: var(--color-primary);
-
-      &::after {
-        border-color: var(--color-primary);
-      }
-    }
-  }
-
   .col__left {
     --left: 45;
     justify-content: center;

@@ -20,13 +20,10 @@ export default async function NosotrosPage() {
       {/* HERO */}
       <Hero
         variant="primary"
+        scrollTo="#section__quote"
         data={{
           h1: data.hero.string_hero_h1,
           portableText: data.hero.rich_hero_title,
-          cta: {
-            label: data.hero.string_hero_cta,
-            scrollTo: "#section__quote",
-          },
           imgMain: data.hero.img_hero_banner,
           imgSecondary: data.hero.img_hero_banner2,
         }}

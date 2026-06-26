@@ -8,21 +8,13 @@ import CustomPortableText from "@/app/common/components/text/CustomPortableText"
 import Button from "@/app/common/components/btn/Button";
 import { startHero } from "@/app/common/lib/gsap/hero.animations";
 import type { IMG, Block } from "@/app/_domain/sanity/types";
-import Link from "next/link";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-
-type Cta = {
-  label: string;
-  scrollTo?: string;
-  href?: string;
-};
 
 type PrimaryData = {
   h1?: string | null;
   portableText?: Block[] | null;
   p?: string | null;
-  cta?: Cta | null;
   imgMain: IMG;
   imgSecondary?: IMG | null;
   sectionId?: string;
@@ -31,12 +23,14 @@ type PrimaryData = {
 type HeroProps = {
   variant: "primary";
   data: PrimaryData;
+  bg?: "gray" | "gray-light";
+  scrollTo?: string;
   sectionClassName?: string;
 };
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-const Hero = ({ variant, data, sectionClassName = "" }: HeroProps) => {
+const Hero = ({ variant, data, bg = "gray", scrollTo, sectionClassName = "" }: HeroProps) => {
   const sectionRef = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -60,7 +54,7 @@ const Hero = ({ variant, data, sectionClassName = "" }: HeroProps) => {
         <section
           id={data.sectionId}
           ref={sectionRef}
-          className={`section__hero section__hero--primary ${sectionClassName}`.trim()}
+          className={`section__hero section__hero--primary section__hero--bg-${bg} ${sectionClassName}`.trim()}
           data-anim-hero
         >
           <div className="column__2">
@@ -74,28 +68,16 @@ const Hero = ({ variant, data, sectionClassName = "" }: HeroProps) => {
 
               {data.p && <p>{data.p}</p>}
 
-              {data.cta?.label && (
+              {scrollTo && (
                 <div className="btn__wrapper">
-                  {data.cta.scrollTo ? (
-                    <Button variant="scroll" to={data.cta.scrollTo}>
-                      {data.cta.label}
-                    </Button>
-                  ) : data.cta.href ? (
-                    <Button variant="link" href={data.cta.href}>
-                      {data.cta.label}
-                    </Button>
-                  ) : null}
+                  <Button variant="scroll" to={scrollTo}>
+                    Más información
+                  </Button>
                 </div>
               )}
             </div>
 
             <div className="col__right">
-              {data.imgSecondary && (
-                <div className="secondary__img">
-                  <ResponsiveImage imageData={data.imgSecondary} variant="hero" />
-                </div>
-              )}
-
               <div className="wrapper__shape__hero">
                 <div className="shape__hero">
                   <ResponsiveImage imageData={data.imgMain} variant="hero" priority />
@@ -104,6 +86,12 @@ const Hero = ({ variant, data, sectionClassName = "" }: HeroProps) => {
                   <ResponsiveImage imageData={data.imgMain} variant="hero" />
                 </div>
               </div>
+
+              {data.imgSecondary && (
+                <div className="secondary__img">
+                  <ResponsiveImage imageData={data.imgSecondary} variant="hero" />
+                </div>
+              )}
             </div>
 
           </div>

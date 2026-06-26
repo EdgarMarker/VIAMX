@@ -16,13 +16,13 @@ const ProductCard = ({ data, variant = "catalog" }: Props) => {
 
   switch (variant) {
 
-    // Tarjeta vertical: imagen arriba, borde izquierdo amarillo, info abajo
+   
     case "primary":
       return (
         <div className="card card__product card__product--primary">
           <div className="card__img">
             <Link href={href}>
-              <ResponsiveImage imageData={data.general.img_general_card} variant="card" />
+              <ResponsiveImage imageData={data.general.img_general_card} variant="card" className="highlight-left" />
             </Link>
           </div>
           <div className="card__body">
@@ -42,7 +42,7 @@ const ProductCard = ({ data, variant = "catalog" }: Props) => {
         </div>
       );
 
-    // Tarjeta horizontal: imagen izquierda, contenido derecha con CTA
+   
     case "catalog":
     default:
       return (

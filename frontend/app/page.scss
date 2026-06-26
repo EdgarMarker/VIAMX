@@ -1,4 +1,27 @@
 #Home{
+    .section__coldNumbers{
+        padding-bottom: var(--pad);
+        .column__1{
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cold__numbers__list{
+            max-width: 1200px;
+            li:nth-child(2), li:nth-child(1){
+                border-color: var(--color-secondary);
+            }
+            .coldNumber{
+                font-size: 180px;
+            }
+        }
+    }
+
+    .section__coldNumbers {
+        ul.cold__numbers__list {
+            background-color: transparent;
+        }
+    }
 
     .section__method {
         background-color: var(--color-gray-light);
@@ -42,7 +65,6 @@
 
         .col__right {
             img {
-                border-left: 5px solid var(--color-secondary);
                 aspect-ratio: 1.2 / 1;
             }
         }
@@ -68,29 +90,35 @@
 
     .section__testimonios{
         background-color: var(--color-gray-light);
+        padding-bottom: var(--pad);
 
         .column__2{
-            margin-bottom: var(--gap);
+            align-items: flex-start;
+
             .col__left{
-                --left: 35;
-            }
-            .col__right{
-                --right: 65;
-                align-items: flex-end;
+                --left: 30;
                 justify-content: center;
             }
+
+            .col__right{
+                --right: 70;
+                display: flex;
+                flex-direction: column;
+            }
         }
 
-        .column__1{
-            padding: 0;
+        .panel__slide{
+            align-self: flex-end;
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            margin-bottom: var(--gap);
         }
 
-        // Pagination dots
         .splide__pagination{
             position: static;
             margin-top: 1.5rem;
             justify-content: flex-end;
-            padding-right: 5%;
 
             &__page{
                 background-color: var(--color-gray);
@@ -112,8 +140,10 @@
 
     .section__recentProjects {
         background-color: var(--color-primary);
+        padding-bottom: var(--pad);
 
         .recentProjects__cta {
+            margin-top: var(--pad);
             display: flex;
             justify-content: center;
             place-self: center;
@@ -122,7 +152,7 @@
 
     .section__intro{
         background-color: var(--color-gray-light);
-
+         padding-bottom: var(--pad);
         .timeline__intro {
             width: 100%;
             margin-block: 2rem;

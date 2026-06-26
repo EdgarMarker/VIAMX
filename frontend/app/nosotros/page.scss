@@ -1,21 +1,4 @@
 #About {
-  
-
-  .section__hero {
-    padding-top: 30px;
-    padding-bottom: var(--pad);
-    .col__left {
-      --left: 45;
-      justify-content: center;
-    }
-    .col__right {
-      --right: 55;
-      img {
-        border-radius: var(--radius);
-        aspect-ratio: 1 / 0.8;
-      }
-    }
-  }
 
   .section__intro {
     padding-bottom: var(--pad);

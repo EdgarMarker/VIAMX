@@ -20,7 +20,7 @@ const Nav = () => {
     YELLOW_ROUTES.includes(pathname) || YELLOW_PATTERN.test(pathname);
 
   const logoColor = isYellowVariant ? "var(--color-secondary)" : "var(--color-black)";
-  const navLinks = navItems.filter((item) => item.href !== "/contacto");
+  const navLinks = navItems;
 
   return (
     <header

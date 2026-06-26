@@ -28,6 +28,7 @@ type ColumnProps = {
   h1?: string | null;
   h3?: string | null;
   h3ClassName?: string | null;
+  imageClassName?: string | null;
   h2?: string | null;
   p?: string | null;
   portableText?: Block[] | null;
@@ -41,6 +42,7 @@ function ColumnContent({
   h1,
   h3,
   h3ClassName,
+  imageClassName,
   h2,
   p,
   portableText,
@@ -77,7 +79,7 @@ function ColumnContent({
         <ResponsiveImage
           imageData={image.imageData}
           variant={image.variant ?? "icon"}
-          className={image.className}
+          className={image.className || imageClassName || ""}
         />
       ) : null}
 
@@ -119,6 +121,7 @@ type Props = {
   rightButton?: ButtonProps | null;
   rightImage?: ImageProps | null;
   rightChildren?: React.ReactNode;
+  imageClassName?: string | null;
 };
 
 export default function Column2({
@@ -152,6 +155,7 @@ export default function Column2({
   rightButton,
   rightImage,
   rightChildren,
+  imageClassName
 }: Props) {
   const hasLeft =
     !!leftChildren ||
@@ -216,6 +220,7 @@ export default function Column2({
                 hasImgInPortableText={rightHasImgInPortableText}
                 button={rightButton}
                 image={rightImage}
+                imageClassName={imageClassName}
               />
             )
           ) : null}

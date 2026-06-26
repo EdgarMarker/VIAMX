@@ -1,10 +1,20 @@
-import { createSection } from '../../../utils/helper-createSection'
-import { array, HERO, image, METRICS, obj, reference, richText, SEO, stringText } from '../../modules/modules'
+import {createSection} from '../../../utils/helper-createSection'
+import {
+  array,
+  HERO,
+  image,
+  METRICS,
+  obj,
+  reference,
+  richText,
+  SEO,
+  stringText,
+} from '../../modules/modules'
 
 const SECTIONS = [
-  { group: { name: 'hero', title: 'Cabecera' }, fields: HERO() },
+  {group: {name: 'hero', title: 'Cabecera'}, fields: HERO()},
   {
-    group: { name: 'intro', title: 'Introducción' },
+    group: {name: 'intro', title: 'Introducción'},
     fields: [
       richText({
         type: 'content',
@@ -15,7 +25,7 @@ const SECTIONS = [
     ],
   },
   {
-    group: { name: 'about', title: 'Nosotros' },
+    group: {name: 'about', title: 'Nosotros'},
     fields: [
       richText({
         type: 'content',
@@ -67,7 +77,7 @@ const SECTIONS = [
     ],
   },
   {
-    group: { name: 'ourMethod', title: 'Nuestra Metodología' },
+    group: {name: 'ourMethod', title: 'Nuestra Metodología'},
     fields: [
       richText({
         type: 'content',
@@ -109,8 +119,8 @@ const SECTIONS = [
       }),
     ],
   },
-   {
-    group: { name: 'testy', title: 'Sección de Testimonios' },
+  {
+    group: {name: 'testy', title: 'Sección de Testimonios'},
     fields: [
       richText({
         type: 'content',
@@ -128,7 +138,7 @@ const SECTIONS = [
     ],
   },
   {
-    group: {name: "recentProjects", title: "Desarrollos Recientes"},
+    group: {name: 'recentProjects', title: 'Desarrollos Recientes'},
     fields: [
       richText({
         type: 'content',
@@ -146,7 +156,7 @@ const SECTIONS = [
     ],
   },
   {
-    group: { name: 'seo', title: 'SEO' },
+    group: {name: 'seo', title: 'SEO'},
     fields: SEO(),
   },
 ]
@@ -154,8 +164,8 @@ const SECTIONS = [
 export const homePage = {
   name: 'homePage',
   type: 'document',
-  groups: [...SECTIONS.map(({ group }) => group)],
-  fields: [...SECTIONS.map(({ group, fields }) => createSection(group, fields))],
+  groups: [...SECTIONS.map(({group}) => group)],
+  fields: [...SECTIONS.map(({group, fields}) => createSection(group, fields))],
   preview: {
     prepare() {
       return {

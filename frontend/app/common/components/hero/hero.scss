@@ -14,16 +14,39 @@
 }
 
 
-// ── PRIMARY variant ───────────────────────────────────────────────────────────
+.section__hero--bg-gray {
+  background-color: var(--color-gray);
+}
+
+.section__hero--bg-gray-light {
+  background-color: var(--color-gray-light);
+}
+
+.section__hero--primary.section__hero--bg-gray-light {
+  h1 {
+    color: var(--color-black);
+  }
+
+  .portableText {
+    h2,
+    h3 {
+      color: var(--color-black);
+    }
+  }
+
+  p {
+    color: var(--color-black);
+  }
+}
 
 .section__hero--primary {
-  background-color: var(--color-gray);
-  height: 100svh;
+  height: 95dvh;
   overflow: hidden;
 
-  // column__2 debe llenar toda la altura del hero
   .column__2 {
-    flex: 1;
+    height: 100%;
+    flex-wrap: nowrap;
+    align-items: stretch;
   }
 
   h1 {
@@ -66,31 +89,15 @@
     }
   }
 
-  .secondary__img {
-    position: absolute;
-    clip-path: polygon(40% 0, 100% 0%, 60% 100%, 0% 100%);
-    top: 65%;
-    right: -37%;
-    width: clamp(50%, 400px, 100%);
-    transform: translate(-50%, -50%) scale(1.2);
-    z-index: 2;
-
-    img {
-      width: 100%;
-      height: auto;
-      aspect-ratio: 1.3 / 1;
-    }
-  }
-
   .wrapper__shape__hero {
-    position: relative;
-    left: -15%;
-    height: 100%; // ancla al alto de col__right
+    position: absolute;
+    inset: 0;
 
     .shape__hero {
-      clip-path: polygon(40% 0, 100% 0%, 60% 100%, 0% 100%);
+      clip-path: polygon(40% 0%, 100% 0%, 60% 100%, 0% 100%);
       overflow: hidden;
       position: relative;
+      width: 100%;
       height: 100%;
 
       img {
@@ -105,11 +112,8 @@
 
     .overlay__shape__hero {
       position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      clip-path: polygon(0 0, 50% 0, 50% 100%, 30% 100%);
+      inset: 0;
+      clip-path: polygon(40% 0%, 100% 0%, 60% 100%, 0% 100%);
 
       img {
         width: 100%;
@@ -117,6 +121,20 @@
         object-fit: cover;
         aspect-ratio: unset;
       }
+    }
+  }
+
+  .secondary__img {
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(84.8% 38%, 100% 38%, 100% 100%, 60% 100%);
+    z-index: 2;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: unset;
     }
   }
 }

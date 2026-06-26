@@ -25,13 +25,10 @@ export default async function Home() {
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <Hero
         variant="primary"
+        scrollTo="#section__intro"
         data={{
           h1: data.hero.string_hero_h1,
           portableText: data.hero.rich_hero_title,
-          cta: {
-            label: data.hero.string_hero_cta,
-            scrollTo: "#section__intro",
-          },
           imgMain: data.hero.img_hero_banner,
           imgSecondary: data.hero.img_hero_banner2,
         }}
@@ -134,6 +131,8 @@ export default async function Home() {
           imageData: data.ourMethod.img_ourMethod_banner,
           variant: "banner",
         }}
+        imageClassName="highlight-left"
+        
       />
 
       {/* ── TESTIMONIOS ───────────────────────────────────────────────────── */}

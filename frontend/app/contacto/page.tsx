@@ -74,8 +74,6 @@ export default async function ContactoPage() {
           )}
         </div>
       </section>
-
-      <PreFooter />
     </main>
   );
 }

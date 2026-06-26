@@ -23,11 +23,8 @@ const SliderTesty = ({ variant, data }: Props) => {
     drag: true,
     autoplay: false,
     gap: "var(--gap)",
-    padding: "5%",
+    padding: "0",
     breakpoints: {
-      1024: {
-        perPage: 2,
-      },
       768: {
         perPage: 1,
       },
@@ -49,43 +46,33 @@ const SliderTesty = ({ variant, data }: Props) => {
   switch (variant) {
     case "Home":
       return (
-        <section className="section__testimonios fadeCards">
+        <section className="section__testimonios">
           <div className="column__2">
+
             <div className="col__left">
               <h3 className="head__title"><strong>/</strong> Testimonios</h3>
-              <CustomPortableText
-                hasImg={false}
-                data={data.testy.rich_testy_testyTitle}
-              />
+              <CustomPortableText hasImg={false} data={data.testy.rich_testy_testyTitle} />
             </div>
+
             <div className="col__right">
               <div className="panel__slide">
-                <button
-                  type="button"
-                  className="slide__prev"
-                  onClick={handlePrev}
-                >
+                <button type="button" className="slide__prev" onClick={handlePrev}>
                   <Svg variant="Arrow" />
                 </button>
-                <button
-                  type="button"
-                  className="slide__next"
-                  onClick={handleNext}
-                >
+                <button type="button" className="slide__next" onClick={handleNext}>
                   <Svg variant="Arrow" />
                 </button>
               </div>
-            </div>
-          </div>
 
-          <div className="column__1">
-            <Splide ref={mainSliderRef} options={splideOptions}>
-              {data.testy.arr_ref_testy_testyList.map((product, idx) => (
-                <SplideSlide key={idx ?? ""}>
-                  <TestyCard data={product} />
-                </SplideSlide>
-              ))}
-            </Splide>
+              <Splide ref={mainSliderRef} options={splideOptions}>
+                {data.testy.arr_ref_testy_testyList.map((item, idx) => (
+                  <SplideSlide key={idx}>
+                    <TestyCard data={item} />
+                  </SplideSlide>
+                ))}
+              </Splide>
+            </div>
+
           </div>
         </section>
       );

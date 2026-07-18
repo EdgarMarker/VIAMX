@@ -37,6 +37,12 @@ const SECTIONS = [
         purpose: 'hero',
         title: 'Imagen de cabecera',
       }),
+      image({
+        type: 'img',
+        context: 'general',
+        purpose: 'timeline',
+        title: 'Imagen de timeline',
+      }),
       {
         name: 'date',
         title: 'Fecha de publicación',
@@ -120,6 +126,17 @@ const SECTIONS = [
         context: 'location',
         purpose: 'api',
         title: 'API - Google maps',
+      }),
+    ],
+  },
+  {
+    group: { name: 'divider', title: 'Divisor' },
+    fields: [
+      image({
+        type: 'img',
+        context: 'divider',
+        purpose: 'img',
+        title: 'Imagen del divisor',
       }),
     ],
   },

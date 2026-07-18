@@ -45,7 +45,7 @@ export default async function Home() {
           items={products.slice().reverse().map((p) => ({
             title: p.general.string_general_name,
             year: p.general.date?.slice(0, 4) ?? '',
-            image: p.general.img_general_card,
+            image: p.general.img_general_timeline,
             slug: p.general.slug.current,
           }))}
         />

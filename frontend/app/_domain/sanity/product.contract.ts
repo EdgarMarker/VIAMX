@@ -10,6 +10,7 @@ export interface ProductInterface {
     textarea_general_card_dsc: string;
     img_general_card: IMG;
     img_general_hero: IMG;
+    img_general_timeline: IMG;
     date: string;
   };
   intro: {
@@ -27,6 +28,9 @@ export interface ProductInterface {
     string_location_maps: string;
     string_location_api: string;
   };
+  divider: {
+    img_divider_img: IMG;
+  };
 }
 
 export const mapProduct = (raw: any): ProductInterface => ({
@@ -36,6 +40,7 @@ export const mapProduct = (raw: any): ProductInterface => ({
     textarea_general_card_dsc: safeString(raw?.general?.textarea_general_card_dsc),
     img_general_card: safeImage(raw?.general?.img_general_card),
     img_general_hero: safeImage(raw?.general?.img_general_hero),
+    img_general_timeline: safeImage(raw?.general?.img_general_timeline),
     date: safeString(raw?.general?.date),
   },
   intro: {
@@ -53,6 +58,9 @@ export const mapProduct = (raw: any): ProductInterface => ({
     string_location_maps: safeString(raw?.location?.string_location_maps),
     string_location_api: safeString(raw?.location?.string_location_api),
   },
+  divider: {
+    img_divider_img: safeImage(raw?.divider?.img_divider_img),
+  },
 });
 
 export const PRODUCT_FIELDS = `
@@ -65,6 +73,10 @@ export const PRODUCT_FIELDS = `
       "alt": altText
     },
     "img_general_hero": img_general_hero {
+      "media": asset->{url},
+      "alt": altText
+    },
+    "img_general_timeline": img_general_timeline {
       "media": asset->{url},
       "alt": altText
     },
@@ -87,6 +99,12 @@ export const PRODUCT_FIELDS = `
     rich_location_title,
     string_location_maps,
     string_location_api
+  },
+  divider {
+    "img_divider_img": img_divider_img {
+      "media": asset->{url},
+      "alt": altText
+    }
   }
 `;
 
